@@ -1,4 +1,4 @@
-#!/bang/bash
+#!/bin/bash
 # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
 # Script: boilerplate.sh
 # Desc: simple boilerplate for shell scripts

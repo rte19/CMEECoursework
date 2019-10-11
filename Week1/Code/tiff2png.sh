@@ -1,7 +1,7 @@
 #!/bin/bash
 # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
 # Script: CountLines.sh
-# Desc: converts tiff to png
+# Desc: converts tiff files to png files
 # Date: 1 Oct 2019
 
 for f in *.tif;

@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
 # Script: CompileLaTeX.sh
 # Desc: This bash compiles LeTeX files, to make PDF files

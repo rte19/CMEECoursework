@@ -1,9 +1,8 @@
 #!/bin/bash
-
 # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
 # Script: variables.sh
 # Desc: you put in a variable in the terminal which becomes the variable
-# and also give two nubers in the terminal and it will add them.
+# and also give two numbers in the terminal and it will add them.
 # Date: 1 Oct 2019
 # Shows the use of variables
 

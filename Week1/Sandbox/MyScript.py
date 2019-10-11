@@ -1,0 +1,6 @@
+#Just learning to write python codeipython
+
+x = 10
+for i in range(x):
+    if i > 3: #4 spaces or 2 tabs in this case
+        print(i)

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: tabtocasv.sh
+# Script: tabtocsv.sh
 # Desc: substitute the tabs in the files with commas
 # saves the output into a .csv file
 # Date: 1 Oct 2019

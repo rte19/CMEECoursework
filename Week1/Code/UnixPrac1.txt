@@ -1,0 +1,40 @@
+#Unix practical, FASTA exercise
+#All these codes should be run from Documents/CMEECoursework/Week1/Code
+
+#1 Count how many lines are in each file
+
+wc -l ../Data/407228326.fasta  #Counts and prints the number of lines in 407228326.fasta 
+wc -l ../Data/407228412.fasta  #Counts and prints the number of lines in 407228412.fasta
+wc -l ../Data/E.coli.fasta  #Counts and prints the number of lines in E.coli.fasta
+
+#2 printing everything starting from the second line for the 
+#E. coli genome
+
+tail -n +2 ../Data/E.coli.fasta  #Chops off the first line and prints the rest of E.coli.fasta
+
+#3 Count the sequence of this genome
+
+tail -n +2 ../Data/E.coli.fasta | wc -m  
+#Chops off the first line, then counts the number of characters in the E.coli.fasta file
+
+#4 Count the matches of a particular sequence, "ATGC" in the genome 
+#of E. coli (hint: Start by removing the first line and removing
+# newline characters)
+
+tail -n +2 ../Data/E.coli.fasta | tr -d '\n' | grep -o "ATGC" | wc -l
+#Chops off the first line, then deletes the newline characters, then searches for and prints all the matches of ATGC on separate lines, thencounts the numer of lines produced. So as to count the number of ATGCs in E.coli.fasta
+
+
+#Exercise 5
+#Compute the AT/GC ratio. That is, the (A+T)/(G+C) ratio. This is a 
+#summary measure of base composition of double-stranded DNA. DNA 
+#from different organisms and lineages has different ratios of the 
+#A-to-T and G-to-C base pairs. For example DNA from organisms that 
+#live in hot springs have a higher GC content, which takes advantage
+# of the increased thermal stability of the GC base pair (google 
+#"Chargaff's rule").
+
+a=`grep -o 'A\|T' ../Data/E.coli.fasta | wc -l` && b=`grep -o 'G\|C' ../Data/E.coli.fasta | wc -l` && echo "$a/$b" | bc -l
+#Searches for and matches all the As and Ts in the E.coli.fasta file and prints each one onto a separate lie, then counts the number of new lines produced, so as to print the value of the number of As and Ts, as variable a,
+#then, searches for and matches all the Gs and Cs in the E.coli.fasta file and prints each one onto a separate lie, then counts the number of new lines produced, so as to print the value of the number of Gs and Cs, as variable b,
+#then, prints the variables a and b in a fraction, which is then put into a calculator to carry out the division to obtain the ratio of (A+T)/(G+C)
