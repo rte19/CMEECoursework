@@ -1,3 +1,6 @@
+#!usr/bin/env python3
+"""A series of for and while loop examples combined with if
+conditionals"""
 
 for j in range(12):
     if j % 3 == 0:

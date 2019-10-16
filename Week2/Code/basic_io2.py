@@ -1,3 +1,6 @@
+#!usr/bin/env python3
+"""Saves the elements of a list in a particular rang to a file"""
+
 #############################
 # FILE OUTPUT
 #############################

@@ -1,3 +1,6 @@
+#!usr/bin/env python3
+"""A script that illustrtes the roles of local and global variales"""
+
 #Author: Ryan Ellis
 #Date made: 09/10/19
 

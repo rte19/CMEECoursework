@@ -1,8 +1,12 @@
+#!/usr/bin/env python3
 
-def createabug(x):
+"""A script illustrating the use of debugging"""
+
+def makeabug(x):
+    """A function with a bug in it"""
     y = x**4
     z = 0.
     y = y/z
     return y
 
-createabug(25)
+makeabug(25)

@@ -2,7 +2,6 @@
 
 """Outlines what a python program boilerplate is"""
 
-
 __appname__ = 'Pythonboilerplate'
 __author__ = 'Ryan Ellis ryan.ellis19@imperial.ac.uk'
 __version__ = '0.0.1'

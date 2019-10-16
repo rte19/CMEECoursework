@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+"""A practical exercise for use of using loops and list comprehensions 
+to display certain information from a particular tuple of tuples"""
+
 # Average UK Rainfall (mm) for 1910 by month
 # http://www.metoffice.gov.uk/climate/uk/datasets
 rainfall = (('JAN',111.4),
@@ -26,9 +30,25 @@ rainfall = (('JAN',111.4),
 rainfall_list = list(rainfall)
 ## (3)
 ##Loop for tuple of the month, rainfall if above 100mm
-Monthmm_above100 = ()
-for 
+Monthmm_above100 = []
+for row in rainfall_list:
+    if row[1] > 100:
+        Monthmm_above100.append(row)
+print(Monthmm_above100)
+
+##Loop for tuple of the month if below 50mm
+Name_below50 = []
+for row in rainfall_list:
+    if row[1] < 50:
+        Name_below50.append(row[0])
+print(Name_below50)
 
 ## (1)
-##Loop comprehension for a tuple with all the month, rainfall greater than 100mm
-month_rainfall_above100mm = ()
+##List comprehension for a tuple with all the month, rainfall greater than 100mm
+Monthmm_above100_lc = [row for row in rainfall_list if row[1] > 100]
+print(Monthmm_above100_lc)
+
+## (2)
+##List comprehension for tuple of the month if below 50mm
+Name_below50_lc = [row[0] for row in rainfall_list if row[1] < 50]
+print(Name_below50_lc)

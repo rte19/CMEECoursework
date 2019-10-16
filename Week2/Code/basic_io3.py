@@ -1,3 +1,7 @@
+#!usr/in/env python3
+"""Writes a dictionary into a .p file and then reads that file
+and prints it out"""
+
 #############################
 # STORING OBJECTS
 #############################

@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+"""A practical exercise for the use loops and list comprehensions can
+be used to display specific information from a tuple of tuples"""
+
 birds = ( ('Passerculus sandwichensis','Savannah sparrow',18.7),
           ('Delichon urbica','House martin',19),
           ('Junco phaeonotus','Yellow-eyed junco',19.5),
@@ -34,11 +38,11 @@ for row in Bird_list:
 print(Body_masses) 
 
 ## (1)
-## A loop comprehension to get all Latin names
+## A list comprehension to get all Latin names
 Latin_names_LC = [row[0] for row in Bird_list]
 print(Latin_names_LC)
 
-## A loop comprehension to get all common names
+## A list comprehension to get all common names
 Common_names_LC = [row[1] for row in Bird_list]
 print(Common_names_LC)
 

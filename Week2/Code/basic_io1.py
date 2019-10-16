@@ -1,3 +1,7 @@
+#!usr/bin/env python 3
+"""Script that reads a txt file and firstly prints all its lines,
+but will also then print all its lines excluding any blank lines""" 
+
 #############################
 # FILE INPUT
 #############################

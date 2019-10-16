@@ -1,3 +1,5 @@
+#!usr/bin/env python3
+"""A series of for and while loop examples"""
 
 # FOR loops in Python
 for i in range(5):
