@@ -16,16 +16,6 @@ Code
     """Writes a dictionary into a .p file and then reads that file
     and prints it out"""
 
-    basic_io.py
-    #!usr/bin/env python3
-    """Script that:
-    1) Script that reads a txt file and firstly prints all its lines,
-    but will also then print all its lines excluding any blank lines
-    2)Saves the elements of a list in a particular rang to a file
-    3)Writes a dictionary into a .p file and then reads that file
-    and prints it out
-    """
-
     basic_csv.py
     #!/usr/bin/env python3
     """Script that:
