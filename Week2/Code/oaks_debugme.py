@@ -23,6 +23,9 @@ def is_an_oak(name):
 
     >>> is_an_oak("quercus,robur")
     True
+
+    >>> is_an_oak("QuerCus.X carrisona")
+    True
     """
 
     name = name.replace(",", " ").replace(".", " ")
