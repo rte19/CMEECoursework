@@ -1,0 +1,121 @@
+Statistics with Sparrows 21/10/2019
+
+When we descibe data, we use measures of centrality (ie. mean, 
+    median) and measures of spread (ie. range, variance, IQR).
+
+Decimal places:
+Conventionally go one less than your data because your results are 
+    only as accurate as your data, and then going one decimal place 
+    less allows for errors in the data and approximations.
+Never go more than 3dp, just change unit.
+
+
+
+Statistics with Sparrows 22/10/2019
+
+se = sqrt(s^2/n)
+
+Thus, if we want to half out standard error, we must increase our 
+    sample size by 4-fold
+
+CI of 95% = +/- 1.96se
+
+Confidence Intervl of 95% means that thereis 95% chance that the true
+    value of the mean lies within this range and that there is 5% 
+    chance it does not.
+
+When hypothesis testing, we always either reject the Null hypothesis
+    or fail to reject the Null - never accept the Null.
+95% CI is just convntion...
+
+
+t testing:
+
+> t.test1 <- t.test(d$Mass~d$Sex.1, na.rm=TRUE)
+> t.test1
+
+	Welch Two Sample t-test
+
+data:  d$Mass by d$Sex.1
+t = -5.5654, df = 1682.9, p-value = 3.039e-08
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.7669117 -0.3672162
+sample estimates:
+mean in group female   mean in group male 
+            27.46852             28.03558 
+
+
+With this two sampled t test:
+    The p value is incredibly small 3.039x10^-8, thus a tiny probability
+        the result is due to chance and randomness
+    It also gives us the confidence range of 95% interval in which our
+        observed difference of means will lie each time we measured.
+        This range doesn't include 0 and thus, 95% of the time our
+        observed difference in means will not equal 0 - happy days!
+    Reject the Null!
+
+
+Type1 error = false positive
+Type2 error = false negative
+    Type2 is dependant of statistical power, bigger the sample size
+        the fewer the error rate
+
+Statistical power of 80% is deemed ok
+
+
+Statitics with Sparrows 23/10/2019
+
+Why record the effect size?
+    So we can actually see the biological difference and thus we can
+        actually see the importance of the significant difference between
+        two means.
+    Record the effect size in the units of the measure, or standard
+        deviations perhaps.
+    Thus, don't just record the p value, record the actual difference.
+
+
+Statistics with Sparrows 24/10/2019
+
+Fit a model to the data, best model that fits the best.
+Linear models: y(i) = b(0) + b(1)x(i) + E(i)
+    () denotes subscript
+    y(i) = y values
+    b(0) = y-intercept
+    b(1) = gradient
+    x(i) = x values
+    E(i) = the residuals (error) in all the paired values
+The best line of best fit is the one that minimises the residuals the 
+    most.
+    Sum the squares of all the residuals. Thus, the best line has the
+        smallest sum of squares of the residuals.
+    R does this for us.
+
+Rsquared is: Coefficient of dtermination
+    Proportion of how much variance in y is eplained by x
+
+Look at the numbers and translate them back ito biology 
+    - An effect size of gradient=800, or gradiet=0.8 could both
+        be significant (small p value) but have dramatically
+        different implications for biology
+
+ Standardising the data:
+    We change the data such that the distibution fits a normal
+        distrubtion with a mean of 0 and standard deviation of 1
+    Into the Z world!
+    If the standarrdise the x, then the y intercept is the standard mean
+
+For the methods and results write up of stats, refer back to lecture 10
+    from stats with sparrows!      
+
+
+Statistics with Sparrows 25/10/2019
+
+lm(response~explanatory)
+
+y variable: continuous
+x variable: continuous or categorical
+
+R will encode two categorical variables as 0 and 1. 0 is the reference
+
+
