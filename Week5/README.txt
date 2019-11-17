@@ -1,4 +1,4 @@
-Material from week 28/10/19 - 03/11/19
+GIS Week 28/10/19 - 03/11/19
 
 Code
 
@@ -23,8 +23,8 @@ Lectures
     Pawar_ModelFitting.pdf 
     Pawar_NLLS.pdf
 
-README.txt
-
 Results
 
 Sandbox
+
+README.txt
