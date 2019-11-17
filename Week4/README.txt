@@ -1,4 +1,4 @@
-Material from week 20/10/19 - 27/10/19
+Statistics Week 21/10/19 - 27/10/19
 
 Code
 
