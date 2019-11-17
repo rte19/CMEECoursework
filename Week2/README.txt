@@ -1,4 +1,4 @@
-Material from week 07/10/19 - 13/10/19
+Bioological Computing in Python I 07/10/19 - 13/10/19
 
 Code 
 
@@ -142,10 +142,10 @@ Data
     testcsv.csv
     TestOaksData.csv
 
-README.txt
-
 Results
 
     Best_alingment.txt
 
 sandbox
+
+README.txt
