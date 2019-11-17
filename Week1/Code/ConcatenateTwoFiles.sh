@@ -1,6 +1,6 @@
 #!/bin/bash
 # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: CountLines.sh
+# Script: ConcatenateTwoFiles.sh
 # Desc: This is combining $2 onto $1 and making it into $3
 # Date: 1 Oct 2019
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: CountLines.sh
+# Script: tiff2png.sh
 # Desc: converts tiff files to png files
 # Date: 1 Oct 2019
 
