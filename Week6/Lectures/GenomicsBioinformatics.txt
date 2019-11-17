@@ -1,0 +1,64 @@
+##Genmics and Bioinformatics - Introduction - 04/11/19
+
+##Intorduction to population genetics - 04/11/19 - main.pdf
+
+Genotypes vs haplotypes
+    When we talk about genotypes we don't care which chromosome e.g ID1 a/g
+    When we talk aout haplotypes we do care about the chromosome numbers e.g ID1.1 a ID1.2 g 
+
+We use di-allelic models a lot beecause it is rare that there will be more than two
+    alleles, more tha two different nucleotides at the sam position
+
+If we assume a di-allelic model, then two alleles, we can have 3 genotypes
+    However, if we have 4 alleles, all 4 bases at the same position, then we have 10 genotypes
+    - this makes is mathematically MUCH harder
+
+Heterozygosity:
+    The proportion of heterozygous individuals
+    in the population
+    Equation, see slides
+Homozygosity:
+    The proportion of homozygotes
+    Equation, see slides
+
+Hardy-Weinberg Equilibrium (HWE) is reliable if the following assupmtions are met:
+    Random mating: individuals mate with each other without regard to genotype
+    Males and females have equal allele frequency
+    Di-allelic locus
+
+Deviations from HWE:
+    Assortative mating: not random with respect to genotype
+        Positive assortative - individuals with same genotype more likely to mate
+        Negative assortative mating
+    Inbreeding: mating of related individuals
+    Population structure: sample of individuals from two or more subpopulations
+    Natural selection
+
+
+
+##Genetic Drift - 05/11/19 - main.pdf
+
+*The fa in the Expected allele frequency equation should be a fA*
+
+*fa(t) = 0, means the allele is lost. = 1 means it is fixed*
+
+The founder effect can cause speciation, like polar bears from brown bears, cool stuff.
+
+##Mutations - 05/11/19 - main.pdf
+
+##Next Generation Sequencing - 06/11/19 - sequencing.pdf
+
+##Coalesence Theory - 07/11/19 - main.pdf
+
+##Population Subdivision - 08/11/19 - main.pdf
+
+**If delta > 0, then HT > HS**
+
+If FST > 0.7 or 0.8 then you could start thinking you have two different species,
+    not just two different populations.
+
+The higher the migration rate, the lower the FST
+However, you need a very large miration rate to effect FST if the population size is huge.
+You only need a small migraton rate to mke a difference if N is small.
+N = population size.
+
