@@ -1,4 +1,4 @@
-Material from week 10/11/19 - 17/11/19
+Biological Computing in Python II 10/11/19 - 17/11/19
 
 Code
 
