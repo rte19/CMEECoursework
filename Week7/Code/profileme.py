@@ -1,5 +1,5 @@
 #!usr/bin/env python3
-"""A script to show how to time the speeds of the script"""
+"""A script to show how to time the speed of the script"""
 
 def my_squares(iters):
     """A function that returns a list containing all the squared values

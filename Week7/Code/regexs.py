@@ -1,4 +1,5 @@
-##Regular expressions in Python
+#!usr/bin/env python3
+"""Regular expressions in Python"""
 
 import re
 
@@ -121,7 +122,7 @@ My_Data = webpage_html.decode()
 #print(My_Data)
 #A lot of potentially useful information! Let's extract all the names of the academics
 pattern = r"(Dr|Prof)\s+\w+\s+\w+"
-regex = re.compile(pattern) #example use of re.compile(); yo can also ignore case with re.IGNORECASE
+regex = re.compile(pattern) #example use of re.compile(); you can also ignore case with re.IGNORECASE
 for match in regex.finditer(My_Data):
     print(match.group())
 

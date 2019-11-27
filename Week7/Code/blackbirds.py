@@ -1,3 +1,5 @@
+#!usr/bin/env python3
+"""A script showing how regular expressions can be used for text mining of files"""
 
 import re
 import scipy as sc 

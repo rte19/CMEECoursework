@@ -1,5 +1,4 @@
 #!usr/bin/env python3
-
 """A script to show how to time the speeds of an improved profileme2.py script"""
 
 
@@ -31,3 +30,4 @@ run_my_funcs(10000000,"My string")
 
 # Type into ipython command line:
 # run -p profileme2.py
+# run -p -s cumtime profileme2.py  #This will do the profling and display the results sorted by cumtime

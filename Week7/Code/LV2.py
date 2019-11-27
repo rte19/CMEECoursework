@@ -1,5 +1,4 @@
 #!usr/bin/env python3
-
 """A script that plots Lotka-Volterra model: a predator-prey system 
 in 2D space"""
 
@@ -30,14 +29,22 @@ def dCR_dt(pops, t=0):
 # z is mortality rate (time−1) and e is the consumer's efficiency 
 #(a fraction) in converting resource to consumer biomass.
 
-type(dCR_dt)
+#type(dCR_dt)
 
 #assigning parameter values to dCR_dt with the command line
-r = sys.argv[1]
-a = sys.argv[2]
-z = sys.argv[3]
-e = sys.argv[4]
-K = 1
+if len(sys.argv) == 5:
+    r = float(sys.argv[1]) #1
+    a = float(sys.argv[2]) #0.5
+    z = float(sys.argv[3]) #1.5
+    e = float(sys.argv[4]) #0.75
+else:
+    r = 1
+    a = 0.5
+    z = 1.5
+    e = 0.75
+    print("Default values are being used here")
+K = 35
+
 
 #Define the time vector; let's integrate from time point 0 to 15, using 1000 sub-divisions of time
 t = sc.linspace(0, 15, 1000)
@@ -70,15 +77,14 @@ p.legend(loc='best')
 p.xlabel('Time') 
 p.ylabel('Population density')
 p.title('Consumer-Resource population dynamics')
-p.show() #To display the figure
+p.text(17, 3, "Parameter values: \n r = %s \n a = %s \n z = %s \n e = %s" % (r, a, z, e), horizontalalignment = 'right')
+#p.show() #To display the figure. Never run p.show in a script from command line
 
-#f1.savefig('../Results/LV2_model.pdf') #save figure
+f1.savefig('../Results/LV2_model.pdf') #save figure
 
-#f2 = p.figure() #Openning a second empty figure
-#p.plot(pops[:,0], pops[:,1], 'r-') # plot
-#p.grid()
-#p.xlabel('Resource density')
-#p.ylabel('Consumer density')
-#p.title('Consumer-Resource population dynamics')
+finalR = pops[-1, 0]
+finalC = pops[-1, 1]
+print("The final R is: %s" % (str(finalR)))
+print("The final C is: %s" % (str(finalC)))
 
-#f2.savefig('../Results/LV_model2.pdf')
+

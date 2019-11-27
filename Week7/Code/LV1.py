@@ -1,5 +1,4 @@
 #!usr/bin/env python3
-
 """A script that plots Lotka-Volterra model: a predator-prey system 
 in 2D space"""
 
@@ -27,7 +26,7 @@ def dCR_dt(pops, t=0):
 # z is mortality rate (time−1) and e is the consumer's efficiency 
 #(a fraction) in converting resource to consumer biomass.
 
-type(dCR_dt)
+#type(dCR_dt)
 
 #assigning parameter values to dCR_dt
 r = 1.

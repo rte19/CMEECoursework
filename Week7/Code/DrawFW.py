@@ -1,5 +1,4 @@
 #!usr/bin/env python3
-
 """A script to generate and plot a "synthetic" food web"""
 
 import networkx as nx 

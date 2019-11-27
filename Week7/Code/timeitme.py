@@ -1,5 +1,4 @@
 #!usr/bin/env python3
-
 """A script to time and compare speeds of the functions from 
 profileme.py and profileme2.py. A method that is easy to use and 
 easy to compare the speeds of functions.
