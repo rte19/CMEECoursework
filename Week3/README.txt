@@ -7,18 +7,26 @@ Code
     boilerplate.R
     break.R
     browse.R
+    CompileLaTeX.R 
     control_flow.R
     DataWrang.R 
     DataWrangTidy.R
+    get_TreeHeight.R 
     Girko.R
     GPDD_Data.R
     MyBars.R
     next.R
+    plotLin.R 
     PP_Lattice.R
+    PP_Regress.R 
     preallocate.R
     Ricker.R
     sample.R
     SQLinR.R
+    TAutoCorResults.bbl
+    TAutoCorResults.blg 
+    TAutoCorResults.pdf
+    TAutoCorResults.tex 
     TAutoCorr.R
     TreeHeight.R
     try.R
@@ -40,7 +48,16 @@ Data
 
 Results
 
-    Best_alingment.txt
+    Girko.pdf
+    MyBars.pdf
+    MyData.csv
+    MyLinReg.pdf
+    PP_Regress.pdf
+    PP_Regress_Results.csv
+    PP_Results.csv
+    Pred_Lattice.pdf
+    Prey_Lattice.pdf
+    SizeRatio_Lattics.pdf
 
 Sandbox
 

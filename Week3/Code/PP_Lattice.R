@@ -1,4 +1,4 @@
-#!usr/bin/env R
+#!/usr/bin/env R
 
 rm(list = ls())
 graphics.off()
