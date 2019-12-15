@@ -184,9 +184,9 @@ question_16 <- function()  {
   graphics.off()
   community.max <- init_community_max(100)
   community.min <- init_community_min(100)
-  duration <- 200
+  burnin <- 200
   speciation_rate <- 0.1
-  for( i in 1:duration){
+  for( i in 1:burnin){
     community1 <- neutral_generation_speciation(community = community.max, speciation_rate = speciation_rate)
     community2 <- neutral_generation_speciation(community = community.min, speciation_rate = speciation_rate)
   }
@@ -237,7 +237,9 @@ question_16 <- function()  {
 
 # Question 17
 cluster_run <- function(speciation_rate, size, wall_time, interval_rich, interval_oct, burn_in_generations, output_file_name)  {
-  
+  community <- init_community_min(size)
+  start_time <- proc.time()[3]
+  cur
 }
 
 # Questions 18 and 19 involve writing code elsewhere to run your simulations on the cluster
@@ -261,54 +263,110 @@ question_22 <- function()  {
 
 # Question 23
 chaos_game <- function()  {
-  # clear any existing graphs and plot your graph within the R window
-  return("type your written answer here")
+  graphics.off()
+  #Storing point vectors
+  A <- c(0,0)
+  B <- c(3,4)
+  C <- c(4,1)
+  X <- c(0,0)
+  
+  #plotting a very small point on a graph
+  plot(1, type = "n", xlab = "", ylab = "", xlim = c(0,4), ylim = c(0,4))
+  
+  
+  #plotting at random half way to each of the three coordinates, rep number of times
+  coords <- list(A, B, C)
+  rep <- 100000
+  for( i in 1:rep){
+    points(X[1], X[2], cex = 0.01)
+    rancoord <- sample(coords, size = 1)
+    X <- (X + rancoord[[1]])/2
+    #points(toplot[1], toplot[2], cex = 0.1)
+  }
+  return("A Lipinski triangle")
 }
 
 # Question 24
 turtle <- function(start_position, direction, length)  {
-
-  return() # you should return your endpoint here.
+  end_x <- start_position[1] + (length * sin(direction)) #working out x2 using soh
+  end_y <- start_position[2] + (length * cos(direction)) #working out y2 using cah
+  end_position <- c(end_x, end_y) #end position coordinate
+  
+  line <- cbind(start_position, end_position) #making matrix contining each starting and ending cordinate in its own row
+  lines(line[1,], line[2,]) #plotting the line
+  
+  return(end_position) # you should return your endpoint here.
 }
 
 # Question 25
 elbow <- function(start_position, direction, length)  {
-  
+  new <- turtle(start_position, direction, length) #drawing the first line and saving the output, the end coordinate
+  turtle(new, direction + pi/4, length*0.95) #drawing the second line quater pi to the right, with the starting coordinate as the end one from before and 0.95 the length
 }
 
 # Question 26
 spiral <- function(start_position, direction, length)  {
-  return("type your written answer here")
+  new <- turtle(start_position, direction, length) #Draws the first line
+  if( length > 0.01){
+    spiral(new, direction + pi/4, length*0.95) #Recursively calls itself so that it makes the spiral
+    return("The function is now recursive, it calls itself. This gives the indefinite spiral while the length > 0.01.")
+  }
 }
 
 # Question 27
 draw_spiral <- function()  {
-  # clear any existing graphs and plot your graph within the R window
-  
+  graphics.off()
+  plot(1, type = "n", xlab = "", ylab = "", xlim = c(0,4), ylim = c(0,4)) #Openning up a blank graph
+  spiral <- spiral(c(1,1), 2*pi, 1) #plots te spiral
+  return(spiral) #returns the same output as before
 }
 
 # Question 28
 tree <- function(start_position, direction, length)  {
-  
+  new <- turtle(start_position, direction, length) #Draws the first line
+  if( length > 0.01){
+    tree(new, direction + pi/4, length*0.65) #Recursively calls itself so that it makes half the tree
+    tree(new, direction - pi/4, length*0.65) #Recursively calls itself so that it makes half the tree
+  }
 }
 draw_tree <- function()  {
-  # clear any existing graphs and plot your graph within the R window
+  graphics.off()
+  plot(1, type = "n", xlab = "", ylab = "", xlim = c(-4,4), ylim = c(0,4)) #Openning up a blank graph
+  tree(c(1,1), 2*pi, 1)
 }
 
 # Question 29
 fern <- function(start_position, direction, length)  {
-  
+  new <- turtle(start_position, direction, length) #Draws the lines
+  if( length > 0.01){
+    fern(new, direction, length*0.87) #Recursively calls itself so that it makes half the fern
+    fern(new, direction - pi/4, length*0.38) #Recursively calls itself so that it makes half the fern
+  }
 }
 draw_fern <- function()  {
-  # clear any existing graphs and plot your graph within the R window
+  graphics.off()
+  plot(1, type = "n", xlab = "", ylab = "", xlim = c(-4,4), ylim = c(0,10)) #Openning up a blank graph
+  fern(c(1,1), 2*pi, 1)
 }
 
 # Question 30
-fern2 <- function(start_position, direction, length)  {
-  
+fern2 <- function(start_position, direction, length, dir)  {
+  new <- turtle(start_position, direction, length) #Draws the lines  
+  if( length > 0.01){ 
+    if( dir == -1){ #if dir == -1, then we go up and left. The dir alternates between 1 and -1
+      fern2(new, direction, length*0.87, dir*-1) #Recursively calls itself so that it makes the fern, but switches dir
+      fern2(new, direction - pi/4, length*0.38, dir*-1) #Recursively calls itself so that it makes the left half of the fern, but switches dir for afterwards
+    }
+    else{ #If dir == 1, then we go up and right
+      fern2(new, direction, length*0.87, dir*-1) #Recursively calls itself so that it makes the right half of the fern, but switches dir for afterwards
+      fern2(new, direction + pi/4, length*0.38, dir*-1) #Recursively calls itself so that it makes the fern, but switches dir for afertwrards
+    }
+  }
 }
 draw_fern2 <- function()  {
-  # clear any existing graphs and plot your graph within the R window
+  graphics.off()
+  plot(1, type = "n", xlab = "", ylab = "", xlim = c(-4,4), ylim = c(0,10)) #Openning up a blank graph
+  fern2(c(1,1), 2*pi, 1, -1)
 }
 
 # Challenge questions - these are optional, substantially harder, and a maximum of 16% is available for doing them.  
