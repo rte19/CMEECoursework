@@ -8,3 +8,4 @@ Week4 - Statistics Week 21/10/19 - 27/10/19
 Week5 - GIS Week 28/10/19 - 03/11/19
 Week6 - Population Genetics Week 04/11/19 - 10/11/19
 Week7 - Biological Computing in Python II 10/11/19 - 17/11/19
+Week8 - 
