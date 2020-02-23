@@ -121,33 +121,42 @@ for (i in 1:length(Data2$data)){
   df1 <- data.frame(length, StraiFit_points)
   df1$Model <- "Straight_Line"
   names(df1) <- c("length", "PopBio_predict", "Model")
+  df_plot <- df1  
   
   QuaFit_points <- predict.lm(QuaFit, data.frame(Time = length))
   df2 <- data.frame(length, QuaFit_points)
   df2$Model <- "Quadratic"
   names(df2) <- c("length", "PopBio_predict", "Model")
+  df_plot <- rbind(df_plot, df2)
   
+  if(CubAIC != "NA" && is.infinite(CubAIC) == FALSE){
   CubFit_points <- predict.lm(CubFit, data.frame(Time = length))
   df3 <- data.frame(length, CubFit_points)
   df3$Model <- "Cubic"
   names(df3) <- c("length", "PopBio_predict", "Model")
-  
+  df_plot <- rbind(df_plot, df3)
+  }
+  if(LogisAIC != "NA" && is.infinite(LogisAIC) == FALSE){
   LogisFit_points <- LogisticMod(t = length, r_max = coef(LogisFit)["r_max"], N_max = coef(LogisFit)["N_max"], N_0 = coef(LogisFit)["N_0"])
   df4 <- data.frame(length, LogisFit_points)
   df4$Model <- "Logistic"
   names(df4) <- c("length", "PopBio_predict", "Model")
-  
+  df_plot <- rbind(df_plot, df4)
+  }
+  if(GompertzAIC != "NA" && is.infinite(GompertzAIC) == FALSE){
   GompertzFit_points <- GompertzMod(t = length, r_max = coef(GompertzFit)["r_max"], N_max = coef(GompertzFit)["N_max"], N_0 = coef(GompertzFit)["N_0"], t_lag = coef(GompertzFit)["t_lag"])
   df5 <- data.frame(length, GompertzFit_points)
   df5$Model <- "Gompertz"
   names(df5) <- c("length", "PopBio_predict", "Model")
-  
+  df_plot <- rbind(df_plot, df5)
+  }
+  if(BaranyiAIC != "NA" && is.infinite(BaranyiAIC) == FALSE){
   BaranyiFit_points <- BaranyiMod(t = length, r_max = coef(BaranyiFit)["r_max"], N_max = coef(BaranyiFit)["N_max"], N_0 = coef(BaranyiFit)["N_0"], t_lag = coef(BaranyiFit)["t_lag"])
   df6 <- data.frame(length, BaranyiFit_points)
   df6$Model <- "Baranyi"
   names(df6) <- c("length", "PopBio_predict", "Model")
-  
-  df_plot <- rbind(df1, df2, df3, df4, df5, df6)
+  df_plot <- rbind(df_plot, df6)
+  }
   
   ###Plotting the models
   ggplot(ModelData, aes(x = Time, y = PopBio)) +
@@ -158,7 +167,7 @@ for (i in 1:length(Data2$data)){
     theme_bw() +
     labs(title = paste(ID), x = ("Time (Hours)"), y = paste("Population Biomass (", ModelData$PopBio_units[1],")", sep = ""))
   
-  ggsave(paste("../Results/", ID, ".png", sep = ""), device = png())
+  ggsave(paste("../Results/model_plots/", ID, ".png", sep = ""), device = png())
   dev.off()
 }
 
