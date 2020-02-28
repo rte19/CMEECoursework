@@ -1,5 +1,7 @@
 #!usr/bin/env R
 
+rm(list = ls())
+graphics.off()
 ###A script to analyse the model fitting results (AICs) produced from the models_all.R script
 
 library(ggplot2)
@@ -134,7 +136,22 @@ AIC_percentages$Best_Fit_percentage_specifically <- Best_Fit_percentage_specific
 
 write.csv(AIC_percentages, file = "../Results/AIC_percentages_results.csv")
 
-###Plotting the AIC percentages in a barplot
-ggplot(data = AIC_percentages, aes(x = AIC_percentages$Model, y = AIC_percentages$Fit_percentage)) +
-  geom_bar(stat = "identity") +
-  labs(title = "Fit percentage of each model across all the dataset IDs", x = "Model", y = "Percentage (%)")
+###Reorganising the AIC_percentages into a format for grouped bar plotting
+Model <- c(rep("Regression", 3), rep("Quadratic", 3), rep("Cubic", 3), rep("Logistic", 3), rep("Gompertz", 3), rep("Baranyi", 3)) #Group, categorical
+Percentage_type <- rep(c("B.Convergence", "A.Best_Fit_Overall", "C.Best_Fit_Specifically"), 6) #Subgroup, categorical
+#Values, numeric
+Percentage <- c(AIC_percentages$Fit_percentage[1], AIC_percentages$Best_Fit_percentage_overall[1], AIC_percentages$Best_Fit_percentage_specifically[1], AIC_percentages$Fit_percentage[2], AIC_percentages$Best_Fit_percentage_overall[2], AIC_percentages$Best_Fit_percentage_specifically[2], AIC_percentages$Fit_percentage[3], AIC_percentages$Best_Fit_percentage_overall[3], AIC_percentages$Best_Fit_percentage_specifically[3], AIC_percentages$Fit_percentage[4], AIC_percentages$Best_Fit_percentage_overall[4], AIC_percentages$Best_Fit_percentage_specifically[4], AIC_percentages$Fit_percentage[5], AIC_percentages$Best_Fit_percentage_overall[5], AIC_percentages$Best_Fit_percentage_specifically[5], AIC_percentages$Fit_percentage[6], AIC_percentages$Best_Fit_percentage_overall[6], AIC_percentages$Best_Fit_percentage_specifically[6])
+AIC_percentages2 <- data.frame(Model, Percentage_type, Percentage) #Dataframe
+
+write.csv(AIC_percentages2, file = "../Results/AIC_percentages_results_reformatted.csv")
+#A. Percentage the model is the best fitting model for all dataset IDs
+#B. Percentage the model fits all dataset IDs
+#C. Of the dataset IDs the model fits, the percentage at which it fits the datast IDs the best
+
+###Plotting the AIC_percentages2 into a grouped barplot
+ggplot(data = AIC_percentages2, aes(fill = Percentage_type, x = Model, y = Percentage)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  theme_bw() +
+  labs(title = "Fit percentages of each model across all the dataset IDs", x = "Model", y = "Percentage (%)")
+ggsave("../Results/AIC_percentages_results_reformatted.png", device = png())
+
