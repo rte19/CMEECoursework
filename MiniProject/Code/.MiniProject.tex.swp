@@ -1,0 +1,94 @@
+\documentclass[11pt, a4paper]{article} % A4 paper size, 11pt font size
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{fouriernc} % Use the New Century Schoolbook font
+\usepackage{lineno} % Allows for linenumbers (many customisable options)
+\usepackage{graphicx} % Allows for the isertion of pictures files: PNG, JPEG, PDF
+\usepackage[margin = 2cm]{geometry} % Applies a margin width of 2cm
+\renewcommand{\familydefault}{\sfdefault} % Ariel font
+\usepackage{natbib} % Allows for author name-year citations
+
+\begin{document}
+
+\begin{titlepage} % Suppresses headers and footers on the title page
+
+	\centering % Centre everything on the title page
+	
+	\vspace*{\baselineskip} % White space at the top of the page
+	
+	\rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+	\rule{\textwidth}{0.4pt} % Thin horizontal rule
+	
+	\vspace{0.75\baselineskip} % Whitespace above the title
+	
+	{\huge How well do different mathematical models, e.g., based upon population growth (mechanistic) theory vs. phenomenological ones, fit to functional responses data across species?} % TITLE
+	
+	\vspace{0.75\baselineskip} % Whitespace below the title
+	
+	\rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+	\rule{\textwidth}{1.6pt} % Thick horizontal rule
+		
+	\vspace{2\baselineskip} % Whitespace after the title block
+	
+	{\LARGE Ryan Ellis} % Large authour Name
+	\vspace*{0.75\baselineskip} % Whitespace under the subtitle
+	
+	\Large % All the following text a little larger
+	Computational Methods in Ecology and Evolution MRes
+	\vspace*{0.75\baselineskip} % Whitespace under Further description
+	
+	2019 - 2020
+	\vspace*{0.75\baselineskip} % Whitespace under year
+
+	ryan.ellis19@imperial.ac.uk
+	\vspace*{3\baselineskip} % Whitespace under email address
+	
+	Imperial College London
+			
+	
+\end{titlepage}
+
+\linenumbers % Default of continuous line numbers on the left hand side of the page hereafter
+\linespread{2} % A line spacing of 1.5 hereafter
+
+
+\section{Introduction}
+
+\section{Data}
+
+The initial dataset, called "LogisticGrowthData.csv", is an accumulation of data collected from many different studies regarding bacterial population growth. Such studies varied in the bacterial species and strains used and observed their growth rates over time, while varying the environment temperature and media the populations were exposed to. Of the many columns of data, all explained in "LogisticGrowthMetaData.csv", the relationship between the bacterial population biomass (PopBio) and time (Time) was of the most interest, taking into account of the species (Species), media (Medium) and temperature (Temp) used in each instance.
+
+\section{Methods}
+
+\subsection{Exploration and Visualisation}
+To begin the project, exploration and visualisation of the data was essential. To do this, a custom script in R was written, called "LG\_DiagnosticPlot.R" to create diagnostic plots of the data. The data was grouped according to species and diagnostic scatter plots drawn, one colour for each temperature, and wrapped by each medium used for that species. This yielded .png files for each species, with scatter plots for each medium used for that species, with the points plotted and colour coded for each temperature within each plot. Diagnostic plots such as these were essential in visualising the data to explore any visual trends. From these scatter plots, it was notable most datasets of each unique combination of species, medium and temperature, increased in bacterial population biomass as time increased. More specifically, the overall trend of the data visually was indeed that of a logistic population growth. Characteristic of logistic growth, we have an initial lag phase, followed by an exponential growth phase, finally reaching a plateau of population growth as the population reach the carrying capacity of the environment. 
+
+\subsection{The Mathematical Models}
+
+
+
+\subsection{Model Fitting}
+
+\subsection{Model Fitting Analysis}
+
+\subsection{Computing Tools}
+
+
+\section{Results}
+
+\section{Discussion}
+
+%\begin{figure}[h] % Inserting the figure here
+%\centering
+%\includegraphics[width=1\textwidth]{../Notes/ganttchart.png} % Inserting the Gantt chart with the width the same as the text width
+%\caption{Gantt chart for the project.}
+%\label{Fig1} 
+%\end{figure}
+
+
+%\bibliographystyle{plainnat} % author name-year citations
+%\bibliography{projectproposal}
+
+
+\end{document}

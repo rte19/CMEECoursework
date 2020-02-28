@@ -169,7 +169,7 @@ for (i in 1:length(Data2$data)){
     theme_bw() + #Making it black and white background
     labs(title = paste(ID), x = ("Time (Hours)"), y = paste("Population Biomass (", ModelData$PopBio_units[1],")", sep = "")) #Labels
   
-  ggsave(paste("../Results/model_plots/", ID, ".png", sep = ""), device = png()) #Saving the plot in results
+  ggsave(paste("../Results/", ID, ".png", sep = ""), device = png()) #Saving the plot in results
   dev.off() #Destroying the plot, in preparation to make the next one in the next interation of the loop
 }
 
