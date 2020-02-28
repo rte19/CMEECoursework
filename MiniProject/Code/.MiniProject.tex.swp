@@ -62,13 +62,59 @@ The initial dataset, called "LogisticGrowthData.csv", is an accumulation of data
 \section{Methods}
 
 \subsection{Exploration and Visualisation}
-To begin the project, exploration and visualisation of the data was essential. To do this, a custom script in R was written, called "LG\_DiagnosticPlot.R" to create diagnostic plots of the data. The data was grouped according to species and diagnostic scatter plots drawn, one colour for each temperature, and wrapped by each medium used for that species. This yielded .png files for each species, with scatter plots for each medium used for that species, with the points plotted and colour coded for each temperature within each plot. Diagnostic plots such as these were essential in visualising the data to explore any visual trends. From these scatter plots, it was notable most datasets of each unique combination of species, medium and temperature, increased in bacterial population biomass as time increased. More specifically, the overall trend of the data visually was indeed that of a logistic population growth. Characteristic of logistic growth, we have an initial lag phase, followed by an exponential growth phase, finally reaching a plateau of population growth as the population reach the carrying capacity of the environment. 
+
+To begin the project, exploration and visualisation of the data was essential. To do this, a custom script in R was written, called "LG\_DiagnosticPlot.R" to create diagnostic plots of the data. The data was grouped according to species and diagnostic scatter plots drawn, one colour for each temperature, and wrapped by each medium used for that species. This yielded .png files for each species, with scatter plots for each medium used for that species, with the points plotted and colour coded for each temperature within each plot. Diagnostic plots such as these were essential in visualising the data to explore any visual trends. From these scatter plots, it was notable most datasets of each unique combination of species, medium and temperature, increased in bacterial population biomass as time increased. More specifically, the overall trend of the data visually was indeed that of a logistic population growth. Characteristic of logistic growth, we have an initial lag phase, followed by an exponential growth phase, finally reaching a plateau of population growth as the population reach the carrying capacity of the environment.
 
 \subsection{The Mathematical Models}
 
+A total of six models were used in order to investigate whether phenomenological or mechanistic models, based on population growth, fit better to the functional responses data across the bacterial species. An even split of three phenomenological models and three mechanistic models were used. The phenomenological models used were three linear polynomial models: regression, quadratic and cubic.
+\paragraph{} On the other hand, the three mechanistic models chosen were all non-linear, using mathematics to describe logistic population growth. The fist model to be tested was the classic logistic equation:
 
+\begin{equation}
+N_t = \frac{(N_0 * N_{max} * e^{r_{max} * t})} {(N_{max} + N_0 * (e^{r_{max} * t} - 1))}
+\end{equation}
+where:
+\begin{itemize}
+\item $N_t$ = population biomass at time t
+\item $N_0$ = initial population size
+\item $N_{max}$ = maximum carrying capacity
+\item $r_{max}$ = maximum growth rate
+\item t = time
+\end{itemize}
+
+\paragraph{} The second mechanistic model to be tested was the modified Gompertz equation: 
+
+\begin{equation}
+N_t = (N_0 + (N_{max} - N_0) * \frac{e^{-e^{r_{max} * e * (t_{lag} - t)}}} {(N_{max} - N_0) * ln(10) + 1}
+\end{equation}
+where:
+\begin{itemize}
+\item $N_t$ = population biomass at time t
+\item $N_0$ = initial population size
+\item $N_{max}$ = maximum carrying capacity
+\item $r_{max}$ = maximum growth rate 
+\item t = time
+\item $t_{lag}$ = time interface between the initial lag phase and the exponential growth phase
+\end{itemize}
+
+\paragraph{} The third and final mechanistic model to be assessed was the Baranyi model:
+
+\begin{equation}
+N_t = N_{max} + log(\frac{-1 + e^{r_{max} * t_{lag}) + e^{r_{max} * t}}}{e^{r_{max} * t} - 1 + e^{r_{max} * t_{lag}} * 10^{n_{max} - N_0}})
+\end{equation}
+where:
+\begin{itemize}
+\item $N_t$ = population biomass at time t
+\item $N_0$ = initial population size
+\item $N_{max}$ = maximum carrying capacity
+\item $r_{max}$ = maximum growth rate
+\item t = time
+\item $t_{lag}$ = time interface between the initial lag phase and the exponential growth phase
+\end{itemize}
 
 \subsection{Model Fitting}
+
+In order to fit the models to the "LogisticGrowthData.csv" dataset, a custom R script was written, called "models\_all.R". models\_all.R takes the original dataset and starts by cleaning the data e.g any negative values for population biomass are removed, as these observations are illogical. The script then proceeds to group the observations by each unique combination of temperature, medium and species, before assigning an identification column with unique IDs for each unique group of data. This creates 285 datasets of observations corresponding to these IDs, whereby we have all the population biomass data recorded over time for each ID in a separate dataframe. Once the data has been cleaned and reformatted, the three mathematical equations: logistic (1), Gompertz (2) and Baranyi (3), are defined as functions for model fitting. Following this, models\_all.R will then in an iterative process, loop through all unique ID datasets, 
 
 \subsection{Model Fitting Analysis}
 
