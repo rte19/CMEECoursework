@@ -4,7 +4,7 @@
 \usepackage[T1]{fontenc} % Output font encoding for international characters
 \usepackage{fouriernc} % Use the New Century Schoolbook font
 \usepackage{lineno} % Allows for linenumbers (many customisable options)
-\usepackage{graphicx} % Allows for the isertion of pictures files: PNG, JPEG, PDF
+\usepackage{graphicx} % Allows for the isertion of pictures files: PNG, JPEG, PDF. Also from different directories
 \usepackage[margin = 2cm]{geometry} % Applies a margin width of 2cm
 \renewcommand{\familydefault}{\sfdefault} % Ariel font
 \usepackage{natbib} % Allows for author name-year citations
@@ -52,6 +52,7 @@
 \linenumbers % Default of continuous line numbers on the left hand side of the page hereafter
 \linespread{2} % A line spacing of 1.5 hereafter
 
+\section{Abstract}
 
 \section{Introduction}
 
@@ -61,7 +62,7 @@ The initial dataset, called "LogisticGrowthData.csv", is an accumulation of data
 
 \section{Methods}
 
-\subsection{Exploration and Visualisation}
+\subsection{Data Exploration and Visualisation}
 
 To begin the project, exploration and visualisation of the data was essential. To do this, a custom script in R was written, called "LG\_DiagnosticPlot.R" to create diagnostic plots of the data. The data was grouped according to species and diagnostic scatter plots drawn, one colour for each temperature, and wrapped by each medium used for that species. This yielded .png files for each species, with scatter plots for each medium used for that species, with the points plotted and colour coded for each temperature within each plot. Diagnostic plots such as these were essential in visualising the data to explore any visual trends. From these scatter plots, it was notable most datasets of each unique combination of species, medium and temperature, increased in bacterial population biomass as time increased. More specifically, the overall trend of the data visually was indeed that of a logistic population growth. Characteristic of logistic growth, we have an initial lag phase, followed by an exponential growth phase, finally reaching a plateau of population growth as the population reach the carrying capacity of the environment.
 
@@ -72,6 +73,7 @@ A total of six models were used in order to investigate whether phenomenological
 
 \begin{equation}
 N_t = \frac{(N_0 * N_{max} * e^{r_{max} * t})} {(N_{max} + N_0 * (e^{r_{max} * t} - 1))}
+\label{eqn:logistic}
 \end{equation}
 where:
 \begin{itemize}
@@ -86,6 +88,7 @@ where:
 
 \begin{equation}
 N_t = (N_0 + (N_{max} - N_0) * \frac{e^{-e^{r_{max} * e * (t_{lag} - t)}}} {(N_{max} - N_0) * ln(10) + 1}
+\label{eqn:Gompertz}
 \end{equation}
 where:
 \begin{itemize}
@@ -101,6 +104,7 @@ where:
 
 \begin{equation}
 N_t = N_{max} + log(\frac{-1 + e^{r_{max} * t_{lag}) + e^{r_{max} * t}}}{e^{r_{max} * t} - 1 + e^{r_{max} * t_{lag}} * 10^{n_{max} - N_0}})
+\label{eqn:Baranyi}
 \end{equation}
 where:
 \begin{itemize}
@@ -114,14 +118,51 @@ where:
 
 \subsection{Model Fitting}
 
-In order to fit the models to the "LogisticGrowthData.csv" dataset, a custom R script was written, called "models\_all.R". models\_all.R takes the original dataset and starts by cleaning the data e.g any negative values for population biomass are removed, as these observations are illogical. The script then proceeds to group the observations by each unique combination of temperature, medium and species, before assigning an identification column with unique IDs for each unique group of data. This creates 285 datasets of observations corresponding to these IDs, whereby we have all the population biomass data recorded over time for each ID in a separate dataframe. Once the data has been cleaned and reformatted, the three mathematical equations: logistic (1), Gompertz (2) and Baranyi (3), are defined as functions for model fitting. Following this, models\_all.R will then in an iterative process, loop through all unique ID datasets, 
+In order to fit the models to the "LogisticGrowthData.csv" dataset, a custom R script was written, called "models\_all.R". models\_all.R takes the original dataset and starts by cleaning the data e.g any negative values for population biomass are removed, as these observations are illogical. The script then proceeds to group the observations by each unique combination of temperature, medium and species, before assigning an identification column with unique IDs for each unique group of data. This creates 285 datasets of observations corresponding to these IDs, whereby we have all the population biomass data recorded over time for each ID in a separate dataframe. 
+\paragraph{} Once the data has been cleaned and reformatted, the three mathematical equations: logistic (Equation \ref{eqn:logistic}), Gompertz (Equation \ref{eqn:Gompertz}) and Baranyi (Equation \ref{eqn:Baranyi}), are defined as functions for model fitting. Following this, models\_all.R will then loop through all the unique ID datasets in an iterative process to carrying out a number of tasks on the data. Initially, it will estimate all the starting parameters ($N_0$, $N_{max}$, $r_{max}$ and $t_{lag}$) necessary of that dataset to attempt fitting the mechanistic non-linear models. Once starting parameters are estimated, each of the six models (regression, quadratic, cubic, logistic (Equation \ref{eqn:logistic}), Gompertz (Equation \ref{eqn:Gompertz}) and Baranyi (Equation \ref{eqn:Baranyi})) are modelled to the data. Immediately after a model is fitted, the AIC of the model fit is calculated. If however, the non-linear models do not converge and thus do not fit the data, the AIC of this model is recorded at NA. After all six models have been fitted to the data (or at least attempted to fit), and their corresponding AICs have been calculated, the AIC information for each model along with the dataset ID is stored in a dataframe that will later be written and exported in a "StatsResults.csv" file.
+\paragraph{} After all six models have been fitted and coefficients thus worked out (or not if the models failed to converge), models\_all.R then seeks to plot the dataset, along with all the models overlaid that successfully converged. It does this by using the optimised parameters, previously calculated in the model fitting step, unique to each of the models and overlays the predicted graph onto the scatter plot of the data. If the model was unsuccessful and failed to converge on this dataset, rendering the AIC value NA, then the graph of the model is not attempted to be made and plotted. This plot, along with its many graphs is then saved and exported as a .png file. This completes one iteration on one ID dataset, and the cycle continues through all ID datasets, producing 285 rows of AIC data and 285 scatter plots with the successful models plotted.
 
 \subsection{Model Fitting Analysis}
 
+For the final analysis, another R script "fit\_analysis.R" was written to perform analysis of the AIC values stored in "StatsResults.csv". This scripts begins by calculating what percentage of datasets each model fitted. Following this, of all 285 datasets, the script calculates what percentage of the datasets did each model perform the best and acheive the lowest AIC value, and thirdly, of the datasets each model actually converges on and fits, the percentage of those each model fitted the est for with the lowest AIC. All these percentage analyses are written into another comma separated values file called "AIC\_percentages.csv" (Table \ref{tab:results}). For ease of visual representation, this csv file is then reformatted into "AIC\_percentages2.csv" and a grouped bar plot is then constructed Figure \ref{fig:barplot}. 
+
 \subsection{Computing Tools}
 
+\subsubsection{Bash}
+
+Bash as a scripting language in this project was used to write "Compile\_MiniProject.sh" in order to compile the Latex script "MiniProject.tex" into the final written report as a pdf file. 
+
+\subsubsection{Python}
+
+Another scripting language, Python, was used in creating the "run\_MiniProject.py" script. This script was written as a pipeline wrapper to run all the other scripts in research project in correct order. This enables a clean execution of the pipeline in order to go from raw data to final results and pdf report from running one single script. 
+
+\subsubsection{R}
+
+R was instrumental to the project, having written most of the code in R and three major scripts: LG\_DiagnosticPlot.R (see Methods: Data Exploration and Visualisation), models\_all.R (see Methods: Model Fitting) and fit\_analysis.R (see Methods: Model Fitting Analysis). Each of the scripts were mostly written in base R, however, three packages were used. While ggplot2 was used for superior creation of plots, in all three scripts, tidyr was used in LG\_DiagnosticPlot.R and models\_all.R for wrangling the datasets with the nest() function. The third package in R was minpack.lm, used in models\_all.R, for the function nlsLM() which sought convergence of the non-linear models and optimisation of the parameters.
 
 \section{Results}
+
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|}
+Model & A) Best Fit Overall (\%) & B) Convergence (\%) & C) Best Fit Specifically (\%) \\
+\hline
+Regression & 3.2 & 100 & 3.2 \\
+Quadratic & 7.4 & 100 & 7.4 \\
+Cubic & 23.9 & 97.9 & 24.4 \\
+Logistic & 6.7 & 43.9 & 15.2 \\
+Gompertz & 53.3 & 95.8 & 55.7 \\
+Baranyi & 5.6 & 35.8 & 15.7 \\
+\end{tabular}
+\caption{A) The percentage for which the model is the best fitting model across all dataset IDs. B) The percentage for which the model fits all dataset IDs. C) Of the dataset IDs the model fits (B), the percentage for which it fits the dataset IDs the best.}
+\label{tab:results}
+\end{table}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=120mm]{../Results/AIC_percentages_results_reformatted.png}
+\caption{A) The percentage for which the model is the best fitting model across all dataset IDs. B) The percentage for which the model fits all dataset IDs. C) Of the dataset IDs the model fits (B), the percentage for which it fits the dataset IDs the best.}
+\label{fig:barplot}
+\end{figure}
 
 \section{Discussion}
 
