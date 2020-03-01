@@ -19,6 +19,12 @@ Data2 <- Data_positive %>%
   nest(-Temp,-Medium,-Species) #Using tidyr to create loads of dataframes for each combination of Temp, Medium, Species
 #Data2 <- nest(Data, c(-Temp, -Medium, -Species)) #Alternative to the way above
 Data2$ID <- paste(Data2$Species, Data2$Medium, Data2$Temp, sep = "_") #Creating the unique IDs for each little dataset in format species_medium_temperature
+for(i in 1:length(Data2$ID)){
+  Data2$ID[i] <- gsub(" ", "-", Data2$ID[i], fixed = TRUE) #Replaces all the whitespace in the ID names with hyphens
+}
+for(i in 1:length(Data2$ID)){
+  Data2$ID[i] <- gsub(".", "-", Data2$ID[i], fixed = TRUE) #Replaces all the full stops in the ID names with hyphens
+}
 
 ###Function for calculating the R^2
 # RSqfun <- function(ModelFit, ModelData){
@@ -163,7 +169,7 @@ for (i in 1:length(Data2$data)){
   ###Plotting the models
   ggplot(ModelData, aes(x = Time, y = PopBio)) + #Plotting the dataset points for the unique ID
     geom_point(size = 2) + #Data point size
-    geom_line(data = df_plot, aes(x = length, y = PopBio_predict, col = Model), size = 2) + #Plotting on the line models of all the models that fitted for df_plot
+    geom_line(data = df_plot, aes(x = length, y = PopBio_predict, col = Model), size = 1.5) + #Plotting on the line models of all the models that fitted for df_plot
     scale_color_manual(values = c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2")) + #Giving the models clour blind friendly colours
     theme(aspect.ratio = 1) + #Making it square
     theme_bw() + #Making it black and white background
