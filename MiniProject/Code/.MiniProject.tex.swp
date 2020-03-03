@@ -137,7 +137,7 @@ In order to fit the models to the "LogisticGrowthData.csv" dataset, a custom R s
 
 For the final analysis, another R script "fit\_analysis.R" was written to perform analysis of the AIC values stored in "StatsResults.csv". This scripts begins by calculating what percentage of datasets each model fitted. Following this, of all 285 datasets, the script calculates what percentage of the datasets did each model perform the best and acheive the lowest AIC value, and thirdly, of the datasets each model actually converges on and fits, the percentage of those each model fitted the est for with the lowest AIC. All these percentage analyses are written into another comma separated values file called "AIC\_percentages.csv" (Table \ref{tab:results}). For ease of visual representation, this csv file is then reformatted into "AIC\_percentages2.csv" and a grouped bar plot is then constructed Figure \ref{fig:barplot}. 
 
-\subsection{Computing Tools}
+\subsection{Computing Tools} 
 
 \subsubsection{Bash}
 
