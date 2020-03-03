@@ -5,11 +5,14 @@
 \usepackage{fouriernc} % Use the New Century Schoolbook font
 \usepackage{lineno} % Allows for linenumbers (many customisable options)
 \usepackage{graphicx} % Allows for the isertion of pictures files: PNG, JPEG, PDF, GIF. Also from different directories
+\usepackage{sidecap} % Allows for captions to be at the side of figures
 \usepackage[margin = 2cm]{geometry} % Applies a margin width of 2cm
 \renewcommand{\familydefault}{\sfdefault} % Ariel font
 \usepackage{natbib} % Allows for author name-year citations
 \usepackage{textcomp} % Allows for degrees celcius symbol
+\usepackage[strings]{underscore} % while in text, ‘_’ itself behaves as \textunderscore (the behaviour of _ in maths mode is not affected)
 
+\newcommand\wordcount{\input{MiniProject.sum}} % Obtaining the word count from MiniProject.sum, ready to place it where needed
 
 \begin{document}
 
@@ -47,7 +50,9 @@
 	\vspace*{3\baselineskip} % Whitespace under email address
 	
 	Imperial College London
-			
+	\vspace*{3\baselineskip} % Whitespace under affiliations
+	
+	\wordcount words % Placing the word count here
 	
 \end{titlepage}
 
@@ -58,13 +63,9 @@
 
 \section{Introduction}
 
-With recent advancements in computing power and programming ability within the scientific community, biologists are increasingly seeking to model more complex data with more complex models \citep{RN69}. This has given rise to a shift in the methods of analysing data. As opposed to the more traditional method of null hypothesis testing, computing power, combined with mathematical applications in biology and awareness, has resulted in the emergence of model selection, upon which to make biological inferences \citep{RN68}. One such industry within biology that has adopted this more complex approach of mathematical modelling on a large scale, is food microbiology \citep{RN108, RN105}. The ability to model and predict bacterial growth data has clear ramifications for the food industry, particularly with regard to the shelf life of food, food spoilage and food poisoning can all be directly related to bacterial growth \citep{RN106}. This has microbiologists using many different modelling techniques and models in order to develop a model that best fits and describes functional response data, in the form of bacterial population growth. Many types of models exist, falling into two categories: phenomenological and mechanistic. Phenomenological models only seek to describe the data being modelled, whereas mechanistic models seek to describe and mathematically explain the phenomena observed in the data. This study aims to shed light on the advantages and disadvantages to using both types, and ultimately answer which type is better in modelling functional response data across species, in the form of bacterial population growth.
+With recent advancements in computing power and programming ability within the scientific community, biologists are increasingly seeking to model more complex data with more complex models and statistics \citep{RN69, RN107}. This has given rise to a shift in the methods of analysing data. As opposed to the more traditional method of null hypothesis testing, computing power, combined with mathematical applications in biology and awareness, has resulted in the emergence of model selection, upon which to make biological inferences \citep{RN68}. One such industry within biology that has adopted this more complex approach of mathematical modelling on a large scale, is food microbiology \citep{RN108, RN105}. The ability to model and predict bacterial growth data has clear ramifications for the food industry, particularly with regard to the shelf life of food, food spoilage and food poisoning can all be directly related to bacterial growth \citep{RN106}. This has microbiologists using many different modelling techniques and models in order to develop a model that best fits and describes functional response data, in the form of bacterial population growth. Many types of models exist, falling into two categories: phenomenological and mechanistic. Phenomenological models only seek to describe the data being modelled, whereas mechanistic models seek to describe and mathematically explain the phenomena observed in the data. This study aims to shed light on the advantages and disadvantages to using both types, and ultimately answer which type is better in modelling functional response data across species, in the form of bacterial population growth.
 \paragraph{} Model selection can thus offer clear advantages to data representation and predictive power in biology and its associated industries. The theoretical bacterial growth curve can be broken down into four main stages: the lag phase, exponential growth phase, stationary phase and death phase \citep{RN106}. The lag phase exists because of the delay in growth due to the time taken for the bacteria to change the gene expression, and prepare their transcriptome and proteome for growth in a nascent environment. Once the microbes are primed for growth however, this sees the transition into the second phase of the growth curve, the exponential phase. In this phase, bacteria multiply via mitosis at an exponential rate, doubling with every mitotic cycle. The population growth enters the stationary phase when resources are no longer in excess and become rate limiting. Now the population has reached carrying capacity, where the death rate equals that of mitosis. Finally, the death phase occurs when resources deplete, rendering the death rate greater than the rate of reproduction. However, due to most food spoilage and food poisoning as a result of bacterial growth long before the death phase, the data collected for the growth curve of particular interest to industry and thus biology, resembles that of a sigmoidal curve \citep{RN110}. Due to this sigmoidal relationship between time and population biomass, three widely used and popular non-linear models will be tested against one another: the classic logistic \citep{RN106}, Gompertz \citep{RN73} and Baranyi model \citep{RN110}, along with three polynomial phenomenological models: linear regression, quadratic and cubic. These particular non-linear and mechanistic models were chosen due to their design in capturing the sigmoidal relationship of bacterial population growth data. On the other hand, the phenomenological polynomials were chosen for their simplicity and familiarity among biologists. 
 
-
-%What is modelling and why - done
-%phenomenological models vs mechenistic
-%why polynomials, why logisitic, Gompertz and Baranyi
 
 \section{Data}
 
@@ -132,8 +133,6 @@ In order to fit the models to the "LogisticGrowthData.csv" dataset, a custom R s
 \paragraph{} Once the data has been cleaned and reformatted, the three mathematical equations: logistic (Equation \ref{eqn:logistic}), Gompertz (Equation \ref{eqn:Gompertz}) and Baranyi (Equation \ref{eqn:Baranyi}), are defined as functions for model fitting. Following this, models\_all.R will then loop through all the unique ID datasets in an iterative process to carrying out a number of tasks on the data. Initially, it will estimate all the starting parameters ($N_0$, $N_{max}$, $r_{max}$ and $t_{lag}$) necessary of that dataset to attempt fitting the mechanistic non-linear models. Once starting parameters are estimated, each of the six models (regression, quadratic, cubic, logistic (Equation \ref{eqn:logistic}), Gompertz (Equation \ref{eqn:Gompertz}) and Baranyi (Equation \ref{eqn:Baranyi})) are modelled to the data. Immediately after a model is fitted, the AIC of the model fit is calculated. If however, the non-linear models do not converge and thus do not fit the data, the AIC of this model is recorded at NA. After all six models have been fitted to the data (or at least attempted to fit), and their corresponding AICs have been calculated, the AIC information for each model along with the dataset ID is stored in a dataframe that will later be written and exported in a "StatsResults.csv" file.
 \paragraph{} After all six models have been fitted and coefficients thus worked out (or not if the models failed to converge), models\_all.R then seeks to plot the dataset, along with all the models overlaid that successfully converged. It does this by using the optimised parameters, previously calculated in the model fitting step, unique to each of the models and overlays the predicted graph onto the scatter plot of the data. If the model was unsuccessful and failed to converge on this dataset, rendering the AIC value NA, then the graph of the model is not attempted to be made and plotted. This plot, along with its many graphs is then saved and exported as a .png file. This completes one iteration on one ID dataset, and the cycle continues through all ID datasets, producing 285 rows of AIC data and 285 scatter plots with the successful models plotted.
 
-
-
 \subsection{Model Fitting Analysis}
 
 For the final analysis, another R script "fit\_analysis.R" was written to perform analysis of the AIC values stored in "StatsResults.csv". This scripts begins by calculating what percentage of datasets each model fitted. Following this, of all 285 datasets, the script calculates what percentage of the datasets did each model perform the best and acheive the lowest AIC value, and thirdly, of the datasets each model actually converges on and fits, the percentage of those each model fitted the est for with the lowest AIC. All these percentage analyses are written into another comma separated values file called "AIC\_percentages.csv" (Table \ref{tab:results}). For ease of visual representation, this csv file is then reformatted into "AIC\_percentages2.csv" and a grouped bar plot is then constructed Figure \ref{fig:barplot}. 
@@ -142,24 +141,25 @@ For the final analysis, another R script "fit\_analysis.R" was written to perfor
 
 \subsubsection{Bash}
 
-Bash as a scripting language in this project was used to write "Compile\_MiniProject.sh" in order to compile the Latex script "MiniProject.tex" into the final written report as a pdf file. 
+Bash was used to write "wordcount\_Minproject.sh" and "compile\_MiniProject.sh", enabling the report word count to be accurately measured and compilation of "MiniProject.tex" into a pdf file, respectively.
 
 \subsubsection{Python}
 
-Another scripting language, Python, was used in creating the "run\_MiniProject.py" script. This script was written as a pipeline wrapper to run all the other scripts in research project in correct order. This enables a clean execution of the pipeline in order to go from raw data to final results and pdf report from running one single script. 
+Python 3.6.9 was used to write the pipeline wrapper called "run\_MiniProject.py". The subprocess package was used to enable it to run each script in the correct order. 
 
 \subsubsection{R}
 
-R was instrumental to the project, having written most of the code in R and three major scripts: LG\_DiagnosticPlot.R (see Methods: Data Exploration and Visualisation), models\_all.R (see Methods: Model Fitting) and fit\_analysis.R (see Methods: Model Fitting Analysis). Each of the scripts were mostly written in base R, however, three packages were used. While ggplot2 was used for superior creation of plots, in all three scripts, tidyr was used in LG\_DiagnosticPlot.R and models\_all.R for wrangling the datasets with the nest() function. The third package in R was minpack.lm, used in models\_all.R, for the function nlsLM() which sought convergence of the non-linear models and optimisation of the parameters.
+R version 3.6.2 (2019-12-12) used to write the three major scripts: LG\_DiagnosticPlot.R (see Methods: Data Exploration and Visualisation), models\_all.R (see Methods: Model Fitting) and fit\_analysis.R (see Methods: Model Fitting Analysis). Each script were mostly written in base R, however, three packages were used. While ggplot2 was used for superior creation of plots, in all three scripts, tidyr was used in LG\_DiagnosticPlot.R and models\_all.R for wrangling the datasets with the nest() function. Finally, minpack.lm was used in models\_all.R, for the function nlsLM(), to converge the non-linear models through optimisation of their parameters.
 
 \section{Results}
 
-After fitting both phenomenological and mechanistic models to the bacterial population growth data across 45 different species and strains, with 285 different unique combinations of species, medium and temperature, it is clear that overall the polynomial phenomenological models most consistently fit the data. Table \ref{tab:results} below illustrates the results of the models fitting. The phenomenological models were the most frequent at converging on the data with: 100\%, 100\% and 97.9\% convergence success rate for the regression, quadratic and cubic models, respectively. With regard to the mechanistic models, the logistic equation was much lower, at 43.9\% convergence success, with the lowest success rate of 35.8\% from the Baranyi model. However, by far the most frequently fitting mechanistic model to the data was the Gompertz model with a 95.8\% converging success rate. The results shown in Table \ref{tab:results} is illustrated below graphically in a grouped bar chart in Figure \ref{fig:barplot}.
+Both phenomenological and mechanistic models were fitted to the bacterial population growth data of 45 different species and strains, with 285 ID'd datasets made up of unique combinations of species, medium and temperature. The model with the lowest AIC value for a particular ID dataset was deemed the best fitting model for that dataset \citep{RN112}. Table \ref{tab:results} below illustrates the results of the models fitting. The phenomenological models were the most frequent at converging on the data with: 100\%, 100\% and 97.9\% convergence success rate for the regression, quadratic and cubic models, respectively. With regard to the mechanistic models, the logistic equation was much lower, at 43.9\% convergence success, with the lowest success rate of 35.8\% from the Baranyi model. However, by far the most frequently fitting mechanistic model to the data was the Gompertz model with a 95.8\% converging success rate. The results shown in Table \ref{tab:results} is illustrated below graphically in a grouped bar chart in Figure \ref{fig:barplot}.
 
-\begin{table}[h]
-\scalebox{0.9}{
+\begin{table}
+\caption{\textbf{A)} The percentage for which the model is the best fitting model across all dataset IDs. \textbf{B)} The percentage for which the model fits all dataset IDs. \textbf{C)} Of the dataset IDs the model fits (B), the percentage for which it fits the dataset IDs the best.}
+\scalebox{0.85}{
 \begin{tabular}{|l|l|l|l|}
-Model & A) Best Fit Overall (\%) & B) Convergence (\%) & C) Best Fit for Converged Datasets (\%) \\
+Model & A) Best Fit Overall (\%) & B) Convergence (\%) & C) Best Fit for Converged Datasets (\%)\\
 \hline
 Regression & 3.2 & 100 & 3.2 \\
 Quadratic & 7.4 & 100 & 7.4 \\
@@ -168,37 +168,49 @@ Logistic & 6.7 & 43.9 & 15.2 \\
 Gompertz & 53.3 & 95.8 & 55.7 \\
 Baranyi & 5.6 & 35.8 & 15.7 \\
 \end{tabular}}
-\caption{\textbf{A)} The percentage for which the model is the best fitting model across all dataset IDs. \textbf{B)} The percentage for which the model fits all dataset IDs. \textbf{C)} Of the dataset IDs the model fits (B), the percentage for which it fits the dataset IDs the best.}
 \label{tab:results}
 \end{table}
 
-\begin{figure}[h]
+\begin{SCfigure} %SCfigure puts the caption on the side of the figure
 \centering
 \includegraphics[width=110mm]{../Results/AIC_percentages_results_reformatted.png}
 \caption{\textbf{A)} The percentage for which the model is the best fitting model across all dataset IDs. \textbf{B)} The percentage for which the model fits all dataset IDs. \textbf{C)} Of the dataset IDs the model fits (B), the percentage for which it fits the dataset IDs the best.}
 \label{fig:barplot}
-\end{figure}
+\end{SCfigure}
 
-\paragraph{} With the regression, quadratic, cubic and Gompertz models fitting at a rate of over 95\%, and logistic (43.9\%) and Baranyi (35.8\%) much lower, consequently a lot of the datasets are only fitted by the phenomenological models and Gompertz (Figure \ref{fig:common}). The Gompertz model also fits the best overall at by far the best rate, at 53.3\% of the time, with cubic at 23.9\%, quadratic 7.4\% and regression 3.2\% (Table \ref{tab:results}). These results are reflected in Figure \ref{fig:common}, with the four most frequently converging models plotted, with each model visually representing the data in order of there best fit percentage overall. Despite the logistic and Baranyi models having the lowest convergence percentage on the datasets, and having relatively low best fit percentage across all the datasets, 6.7\% and 5.6\% (Table \ref{tab:results}), respectively, however, when the two models do fit the datasets, their best fit percentage increases dramatically: consequently, we observe nearly a 3-fold increase in the rate at which they achieve the lowest AIC score among all the models, with logistic achieving a best fit percentage of 15.2\% and Baranyi a similar 15.7\%. This is reflected in Figure \ref{fig:models}, which illustrates that when logisitc and Baranyi do converge on the data and fit, they do fit very well.
+\paragraph{} With the regression, quadratic, cubic and Gompertz models fitting at a rate of over 95\%, and logistic (43.9\%) and Baranyi (35.8\%) much lower, consequently a lot of the datasets are only fitted by the phenomenological models and Gompertz (Figures \ref{fig:3phase} and \ref{fig:common}). The Gompertz model also fits the best overall at by far the best rate, at 53.3\% of the time, with cubic at 23.9\%, quadratic 7.4\% and regression 3.2\% (Table \ref{tab:results}). These results are reflected in Figure \ref{fig:common}, with the four most frequently converging models plotted, with each model visually representing the data in order of there best fit percentage overall. Despite the logistic and Baranyi models having the lowest convergence percentage on the datasets, and having relatively low best fit percentage across all the datasets, 6.7\% and 5.6\% (Table \ref{tab:results}), respectively, however, when the two models do fit the datasets, their best fit percentage increases dramatically: consequently, we observe nearly a 3-fold increase in the rate at which they achieve the lowest AIC score among all the models, with logistic achieving a best fit percentage of 15.2\% and Baranyi a similar 15.7\%. This is reflected in Figure \ref{fig:models}, which illustrates that when logisitc and Baranyi do converge on the data and fit, they do fit very well.
 
-\begin{figure}[h]
+\begin{SCfigure}[][h]
 \centering
-\includegraphics[width=100mm]{../Results/Weissella-viridescens_MRS-broth_4.png} % \includegraphics does NOT like WHITESPACE OR EXTRA full stops in figure names
-\caption{A plot showing the for most frequently converging models: regression, quadratic, cubic and Gompertz. Here, the Gompertz model is modelling the data best. The dataset here is \textit{Weissella viridescens} on a MRS broth medium at 7\textcelsius{}.}
-\label{fig:common}
-\end{figure}
+\includegraphics[width=110mm]{../Results/Aerobic-Psychotropic-_Raw-Chicken-Breast_15.png} % \includegraphics does NOT like WHITESPACE OR EXTRA full stops in figure names
+\caption{A plot showing the for most frequently converging models: regression, quadratic, cubic and Gompertz, to a three phase growth curve with a lag pahse, exponential phase and stationary phase. The dataset here is \textit{Aerobic Psychotropic} on a raw chicken breast medium at 15\textcelsius{}.}
+\label{fig:3phase}
+\end{SCfigure}
 
-\begin{figure}[h]
+\begin{SCfigure}[][h]
+\centering
+\includegraphics[width=110mm]{../Results/Weissella-viridescens_MRS-broth_4.png} % \includegraphics does NOT like WHITESPACE OR EXTRA full stops in figure names
+\caption{A plot showing the for most frequently converging models: regression, quadratic, cubic and Gompertz, to a two phase growth curve with a lag phase and exponential phase. The dataset here is \textit{Weissella viridescens} on a MRS broth medium at 7\textcelsius{}.}
+\label{fig:common}
+\end{SCfigure}
+
+\begin{SCfigure}[][h]
 \centering
 \includegraphics[width=110mm]{../Results/Enterobacter-sp-_TSB_35.png}
-\caption{A plot showing all the models converging on the dataset where \textit{Enterobacter sp} is growing on a TSB medium at 35\textcelsius{}.}
+\caption{A plot showing all the models converging on the dataset where \textit{Enterobacter sp} is growing on a TSB medium at 35\textcelsius{}. Here we have a two phase growth curve, with a exponential phase and a stationary phase.}
 \label{fig:models}
-\end{figure}
-
+\end{SCfigure}
 
 \section{Discussion}
 
+Possibly the most widely used and understood models, the linear regression model does converge on the data 100\% of the time (Table \ref{tab:results}), seemingly a very reliable model, however it only actually the best fitting model 3.2\% of the time, the lowest percentage of all the models. As seen in Figures \ref{fig:common} and \ref{fig:models}, despite converging, most of the time the linear regression actually models the data very poorly. Similarly to the linear regression, the quadratic polynomial also models the data 100\% of the time. Behaving very differently however, the quadratic comes out as being the best fitting model 7.4\% of the time, a greater than 2-fold improvement on the linear regression. The quadratic manifests in a parabolic shape, allowing it the ability to model two of the four phases (lag phase, exponential growth phase, stationary phase and death phase) of the population growth curve. Ideally there would always be the three phases main phases of interest: the lag phase, exponential phase and stationary phase \citep{RN106} (Figure \ref{fig:3phase}), however, this is not always the case. For example, if the time of the experiment did not proceed for long enough, there is a possibility the bacterial population never entered into the stationary phase, resulting in a truncated growth curve consisting of solely the lag phase and exponential phase. Moreover, if the bacteria are able to prepare their gene and protein expression fast enough, then there will be no lag phase measured and therefore there might only be a noticeable exponential growth phase and stationary phase (Figure \ref{fig:models}). In both scenarios, the quadratic is able to model the data fairly well, and therefore achieving a 7.4\% best fit percentage.
+\paragraph{} The simplest of all the non-linear, mechanistic models is the logistic model. The logistic equation has one less paramater compared with Gompertz and or Baranyi. Lacking the $t_{lag}$ parameter results in the equation only being able to accurately model a two phase growth curve, much like the quadratic. On the contrary to the quadratic however, the logistic equation is only able to reliably model the exponential phase and stationary phase of a growth curve (Figure \ref{fig:models}) whereby the data is relatively clean, due to its mathematical constraints. This results in most of the datasets, that resemble a lag phase and exponential phase, or lag phase, exponential phase and stationary phase, unable to modelled by the logistic equation (Figure \ref{fig:common} and \ref{fig:3phase}, respectively). This explanation is why we see this model fitting a low proportion of the datasets (43.9\%). On the other hand, because of this ability to capture an exponential phase followed by a stationary phase, when the model does converge on a dataset, we see that the model can fit very well (Figure \ref{fig:models}): of those datasets it successfully converges on, 15.2\% of the time the model is the best fitting one overall, which is considerably better than linear regression or quadratic (Tale \ref{tab:results}).
+\paragraph{} With the three phases of the grow curve theoretically representing taking a sigmoidal shape, it is not so surprising that the three best fitting models are the ones that also take a sigmoidal shape: the cubic, Gompertz and Baranyi. The cubic, being a linear model will almost always converge and fit the data. This is observed in its extremely high convergence percentage of 97.9\% (Table \ref{tab:results}). Being a sigmoid, for the datasets it does successfully converge on, it performs best 24.4\% of the time. However, this constraint of always being a sigmoid, the model is let down on some datasets that resemble only two phases of the growth curve, for example Figure \ref{fig:models}. This is where the Gompertz model supercedes all other models. The Gompertz model is able to converge on 95.8\% of the dataset IDs, as well as performing as the best fitting model a staggering 55.7\% of the time when it does converge. This non-linear model is able to capture the lag phase, the exponential phase and stationary phase extremely well (Figure \ref{3phase}), as well as when only the lag phase and exponential phase are observed (Figure \ref{fig:common}) or the exponential phase and stationary phase (Figure \ref{fig:models}). On the other hand, the Baranyi model seems to be rather more difficult to converge and fit the data, only fitting a mere 35.8\% of the datasets and therefore having a low performance across all the datasets. However, like the logistic equation, when the model does successfully converge and fit the data, it appears to be the best fitting model 15.7\% of the time. Thus, the Baranyi model, assuming clean data is collected that resembles the theoretical relationship of population growth, is a contender for being the best fitting model. 
+\paragraph{} As seen in Figure \ref{fig:models}, where all six models converge on the data, despite only the model with the lowest AIC value being recorded as the winner, all three mechanistic models represent and fit the data very well and considerably better than the phenomenological models. Therefore, more research is still needed to not only ascertain the best performing models of the dataset, but if any other models score low enough on the Akaike Information Criterion to fit the model insignificantly worse than the winner, then it should also be credited. This would create a better understanding of each of the model's ability to fit the functional response data. Despite possibly some of the most common and widely used models being used in this project \citep{RN108, RN105}, this is not an exhaustive sample of models. Consequently, it is very likely that other models exist that could be even better and therefore need to be tested.
+ 
+\section{Conclusion}
 
+Overall, the model that best fits the functional response, population growth data was the mechanistic Gompertz model. Fitting the vast majority of the models and achieving by far the highest proportion of lowest AIC scores, this model also provides some mathematical explanation of the behaviour of the data. This supersedes the phenomenological models in terms of providing an explanation of the data, while fitting nearly as many of the datasets with much better representation. However, this is not to say that all mechanistic models fit the data better than phenomenological ones, as the cubic polynomial also performs very well. What the cubic model lacks in mathematical explanation of the data, it makes up for in its ability reliability in fitting the data, as well as its ability to capture the shape of the growth curve and thus being the second best performing model. Therefore, it is not simply a matter of mechanistic or phenomenological, but rather down to the individual models, with the mechanistic Gompertz and phenomenological cubic the best fitting and the second most fitting models, respectively.
 
 \bibliographystyle{plainnat} % author name-year citations
 \bibliography{../Data/MiniProject}

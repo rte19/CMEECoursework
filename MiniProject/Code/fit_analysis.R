@@ -153,5 +153,6 @@ ggplot(data = AIC_percentages2, aes(fill = Percentage_type, x = Model, y = Perce
   geom_bar(stat = "identity", position = "dodge") +
   theme_bw() +
   labs(title = "Fit percentages of each model across all the dataset IDs", x = "Model", y = "Percentage (%)")
+pdf(NULL)
 ggsave("../Results/AIC_percentages_results_reformatted.png", device = png())
 
