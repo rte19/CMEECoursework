@@ -59,4 +59,6 @@ Data
     MiniProject.bib
         Bibliography for MiniProject.tex
 
+    MiniProject.sum 
+        A text file to hold the word count of the report
 Results
