@@ -1,11 +1,11 @@
 #!usr/bin/env R
+###A script to analyse the model fitting results (AICs) produced from the models_all.R script
 
 rm(list = ls())
 graphics.off()
-###A script to analyse the model fitting results (AICs) produced from the models_all.R script
 
 library(ggplot2)
-
+  
 ###Reading in the data
 AICs <- read.csv("../Data/AICs.csv")
 

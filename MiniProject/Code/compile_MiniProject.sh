@@ -1,7 +1,7 @@
 #!/bin/bash
 # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
 # Script: compile_MiniProject.sh
-# Desc: This bash compiles LaTeX files, to make PDF files
+# Desc: This bash compiles MiniProject LaTeX file, to make it a PDF file in Results directory
 # Date: 03 March 2020
 
 pdflatex MiniProject.tex
@@ -20,7 +20,7 @@ rm *.out
 rm *.snm
 rm *.toc
 
-##Mov the write up to the results directory
+##Move the write up to the results directory
 mv MiniProject.bbl ../Results/
 mv MiniProject.blg ../Results/
 mv MiniProject.pdf ../Results/

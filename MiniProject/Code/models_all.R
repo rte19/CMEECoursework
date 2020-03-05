@@ -1,4 +1,5 @@
 #!usr/bin/env R
+###A script for modelling all the six models on the data
 
 rm(list = ls())
 graphics.off()

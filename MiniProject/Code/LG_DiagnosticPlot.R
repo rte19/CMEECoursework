@@ -1,4 +1,5 @@
 #!usr/bin/env R
+###Constructing diagnostic plots of the data
 
 rm(list =ls())
 graphics.off()
