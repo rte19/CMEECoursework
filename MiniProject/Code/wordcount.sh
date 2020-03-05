@@ -5,7 +5,4 @@
 # Date: 03 March 2020
 
 #Count the words and put it into MiniProject.sum
-texcount -1 -sum MiniProject.tex > MiniProject.sum
-
-#Move MiniPrject.sum to the Data directory
-mv MiniPrject.sum ../Data/
+texcount -1 -sum MiniProject.tex > ../Data/MiniProject.sum
