@@ -1,0 +1,264 @@
+Starting weekly assessment for Ryan, Week4
+
+Current Points = 100
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your Git repo size this week is about 90.59 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, maximum_likelihood_estimation, Week10, HPC, Week5, Week2, Week4, .git, Week3, MiniProject
+
+Found the following files in parent directory: README.txt, .gitignore
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+**********************************************************************
+*~ 
+*.tmp
+__pycache__
+*.bbl
+*.blg
+*.pyc
+.Rhistory
+
+Results**********************************************************************
+
+Found README in parent directory, named: README.txt
+
+Printing contents of README.txt:
+**********************************************************************
+README for all CMEECoursework!
+
+Assessment
+Week1 - Bash and LATEX week 30/09/19 - 06/10/19
+Week2 - Biological Computing in Python I 07/10/19 - 13/10/19
+Week3 - Biological Computing in R 14/10/19 - 20/10/19
+Week4 - Statistics Week 21/10/19 - 27/10/19
+Week5 - GIS Week 28/10/19 - 03/11/19
+Week6 - Population Genetics Week 04/11/19 - 10/11/19
+Week7 - Biological Computing in Python II 10/11/19 - 17/11/19
+Week8 - **********************************************************************
+
+======================================================================
+Looking for the weekly directories...
+
+Found 8 weekly directories: Week1, Week10, Week2, Week3, Week4, Week5, Week6, Week7
+
+The Week4 directory will be assessed 
+
+======================================================================
+======================================================================
+PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing WEEK4...
+
+Found the following directories: Code, Lectures, Data
+
+Found the following files: README.txt
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: README.txt
+
+Printing contents of README.txt:
+**********************************************************************
+Statistics Week 21/10/19 - 27/10/19
+
+Code
+
+    bidbillseatmore.R
+    statswithsparrows.R
+
+Data
+
+    daphnia.txt
+    ipomopsis.txt
+    SparrowSize.txt
+    timber.txt
+
+Lectures
+
+    stats_notes.txt
+
+README.txt
+
+Results
+
+Sandbox**********************************************************************
+
+Results directory missing!
+
+Creating Results directory...
+
+Found 2 code files: bigbillseatmore.R, statswithsparrows.R
+
+======================================================================
+Testing script/code files...
+
+======================================================================
+Inspecting script file bigbillseatmore.R...
+
+File contents are:
+**********************************************************************
+#!usr/bin/env R
+
+## A lnear model hypothesising weather sparoows with bigger bills
+## eat more..
+
+Data <- read.table("SparrowSize.txt", header=TRUE) #Reding in the data
+
+require(dplyr)
+dplyr::slice(Data, 0:10) #Looking at the data
+
+require(tidyr)
+Data2 <- drop_na(Data) # Taking out all NA values and making a 
+#new table out of it
+
+dplyr::slice(Data2, 0:10) #Having a look at new table
+
+model1 <- lm(Data2$Mass~Data2$Bill) #Performaing linear regression
+plot(Data2$Bill, Data2$Mass) #Plotting thr data
+abline(model1) #Plotting the line of best fit
+
+summary(model1) #Getting the summary data for coefficients and p values
+
+**********************************************************************
+
+Testing bigbillseatmore.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Error in file(file, "rt") : cannot open the connection
+Calls: read.table -> file
+In addition: Warning message:
+In file(file, "rt") :
+  cannot open file 'SparrowSize.txt': No such file or directory
+Execution halted
+
+======================================================================
+Inspecting script file statswithsparrows.R...
+
+File contents are:
+**********************************************************************
+## To be interpretted in the directory of statistics_in_R
+
+d <- read.table("SparrowSize.txt", header=TRUE) #Reading this data file
+
+par(mfrow = c(3, 2)) #Tells rstudio how many plots to put in a
+#page in the 'Plots' window. In the case a table of them in the 
+#format 3 by 2 
+
+hist(d$Tarsus, breaks = 3, col="grey") #Just making some histograms
+hist(d$Tarsus, breaks = 10, col="grey")
+hist(d$Tarsus, breaks = 30, col="grey")
+hist(d$Tarsus, breaks = 100, col="grey")
+hist(d$Tarsus, breaks = 100, col="grey")
+
+mean(d$Tarsus, na.rm = TRUE) #The defualt is that NA values are
+#kept, na.rm=FALSE, so here we are removing them
+
+median(d$Tarsus, na.rm = TRUE)
+
+range(d$Bill, na.rm=TRUE)
+
+var(d$Mass, na.rm=TRUE) #Variance
+
+sqrt(var(d$Wing, na.rm=TRUE)) #Standard deviation, by square rootig the variance
+sd(d$Wing, na.rm=TRUE) #Working out standard deviation directly
+
+# round(varibale, digit = x)    How to round stuff
+
+rm(list=ls()) ##Removes the workspace, clears it totally
+
+#Working standard error out for Tarsus lengths
+d <- read.table("SparrowSize.txt", header=TRUE)
+d1 <- subset(d, d$Tarsus != "NA")
+seTarsus <- sqrt(var(d1$Tarsus)/length(d1$Tarsus))
+seTarsus
+
+d12001 <- subset(d1, d1$Year==2001)
+seTarsus2001 <- sqrt(var(d12001$Tarsus)/length(d12001$Tarsus))
+seTarsus2001
+
+#SE for body mass
+d2 <- subset(d, d$Mass != "NA")
+seMass <- sqrt(var(d2$Mass)/length(d2$Mass))
+seMass
+
+#SE of wing length
+d3 <- subset(d, d$Wing != "NA")
+seWing <- sqrt(var(d3$Wing)/length(d3$Wing))
+seWing
+
+
+##Doing t tests!!!!
+t.test1 <- t.test(d$Mass~d$Sex.1, na.rm=TRUE)
+t.test1
+
+#Doing a boxlot with these data
+boxplot(d$Mass~d$Sex.1, col = c("red", "blue"), ylab = "Body Mass (g)")
+
+##Doing a power analysis
+pwr.t.test(d=(0-5)/0.96, power=0.8, sig.level=0.05)
+
+##Doing a linear regression model analysis
+x <- c(1, 2, 3, 4, 8)
+y <- c(4, 3, 5, 7, 9)
+
+model1 <- lm(y~x) #making the linear regression
+model1 #Gives the y-intercept and slope of the line
+summary(model1) #Gives residuals of value. Gives lots of coefficients...
+anova(model1) #Perfomrs an ANOVA
+resid(model1) #Gives residuals for all corodinates
+cov(x,y) #Gives covariance
+var(x,y) #Givs variance
+plot(y~x) # plot y on x
+abline(model1) # plots the linear regression , model1,  on the graph
+**********************************************************************
+
+Testing statswithsparrows.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Error in file(file, "rt") : cannot open the connection
+Calls: read.table -> file
+In addition: Warning message:
+In file(file, "rt") :
+  cannot open file 'SparrowSize.txt': No such file or directory
+Execution halted
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 2 errors
+
+======================================================================
+======================================================================
+
+FINISHED WEEKLY ASSESSMENT
+
+Current Points for the Week = 100
+
+NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

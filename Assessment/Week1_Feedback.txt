@@ -9,11 +9,11 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 8.00 MiB on disk 
+Your Git repo size this week is about 90.59 MiB on disk 
 
 PART 1: Checking project workflow...
 
-Found the following directories in parent directory: Week1, Assessment, Week2, .git
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, maximum_likelihood_estimation, Week10, HPC, Week5, Week2, Week4, .git, Week3, MiniProject
 
 Found the following files in parent directory: README.txt, .gitignore
 
@@ -25,20 +25,34 @@ Printing contents of .gitignore:
 **********************************************************************
 *~ 
 *.tmp
-**********************************************************************
+__pycache__
+*.bbl
+*.blg
+*.pyc
+.Rhistory
+
+Results**********************************************************************
 
 Found README in parent directory, named: README.txt
 
 Printing contents of README.txt:
 **********************************************************************
-My CMEE Coursework Repository
-Do I like this better?
-**********************************************************************
+README for all CMEECoursework!
+
+Assessment
+Week1 - Bash and LATEX week 30/09/19 - 06/10/19
+Week2 - Biological Computing in Python I 07/10/19 - 13/10/19
+Week3 - Biological Computing in R 14/10/19 - 20/10/19
+Week4 - Statistics Week 21/10/19 - 27/10/19
+Week5 - GIS Week 28/10/19 - 03/11/19
+Week6 - Population Genetics Week 04/11/19 - 10/11/19
+Week7 - Biological Computing in Python II 10/11/19 - 17/11/19
+Week8 - **********************************************************************
 
 ======================================================================
 Looking for the weekly directories...
 
-Found 2 weekly directories: Week1, Week2
+Found 8 weekly directories: Week1, Week10, Week2, Week3, Week4, Week5, Week6, Week7
 
 The Week1 directory will be assessed 
 
@@ -59,73 +73,107 @@ Found README in parent directory, named: README.txt
 
 Printing contents of README.txt:
 **********************************************************************
-#!/bin/bash
-# Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: boilerplate.sh
-# Desc: simple boilerplate for shell scripts
-# Arguments: none
-# Date: 1 Oct 2019
+Bash and LATEX week 30/09/19 - 06/10/19
 
-#!/bin/bash
-# Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: tabtocsv.sh
-# Desc: substitute the tabs in the files with commas
-# saves the output into a .csv file
-# Date: 1 Oct 2019
+Code
 
-#!/bin/bash
-# Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: variables.sh
-# Desc: you put in a variable in the terminal which becomes the variable
-# and also give two numbers in the terminal and it will add them.
-# Date: 1 Oct 2019
-# Shows the use of variables
+    #!/bin/bash
+    # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
+    # Script: boilerplate.sh
+    # Desc: simple boilerplate for shell scripts
+    # Arguments: none
+    # Date: 1 Oct 2019
 
-#!/bin/bash
-# Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: MyEampleScript.sh
-# Desc: Says hello to me
-# Date: 1 Oct 2019
+    #!/bin/bash
+    # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
+    # Script: CompileLaTeX.sh
+    # Desc: This bash compiles LeTeX files, to make PDF files
+    # Date: 2 Oct 2019
 
-#!/bin/bash
-# Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: CountLines.sh
-# Desc: tells you the number of lines in the file of choice
-# Date: 1 Oct 2019
+    #!/bin/bash
+    # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
+    # Script: ConcatenateTwoFiles.sh
+    # Desc: This is combining $2 onto $1 and making it into $3
+    # Date: 1 Oct 2019
 
-#!/bin/bash
-# Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: CountLines.sh
-# Desc: This is combining $2 onto $1 and making it into $3
-# Date: 1 Oct 2019
+    #!/bin/bash
+    # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
+    # Script: CountLines.sh
+    # Desc: tells you the number of lines in the file of choice
+    # Date: 1 Oct 2019
 
-#!/bin/bash
-# Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: CountLines.sh
-# Desc: converts tiff files to png files
-# Date: 1 Oct 2019
+    #!/bin/bash
+    # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
+    # Script: csvtospace.sh
+    # Desc: substitute the commas in the file with spaces
+    # saves the output into a .ssv file
+    # Date: 11 Oct 2019
 
-#!/bin/bash
-# Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: csvtospace.sh
-# Desc: substitute the commas in the file with spaces
-# saves the output into a .ssv file
-# Date: 11 Oct 2019
+    FirstBiblio.bib
 
-#!/bin/bash
-# Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: CompileLaTeX.sh
-# Desc: This bash compiles LeTeX files, to make PDF files
-# Date: 2 Oct 2019**********************************************************************
+    FirstExample.pdf 
+
+    FirstExample.tex 
+
+    #!/bin/bash
+    # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
+    # Script: MyEampleScript.sh
+    # Desc: Says hello to me
+    # Date: 1 Oct 2019    
+
+    #!/bin/bash
+    # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
+    # Script: tabtocsv.sh
+    # Desc: substitute the tabs in the files with commas
+    # saves the output into a .csv file
+    # Date: 1 Oct 2019
+
+    #!/bin/bash
+    # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
+    # Script: tiff2png.sh
+    # Desc: converts tiff files to png files
+    # Date: 1 Oct 2019
+
+    UnixPrac1.txt
+    #Unix practical, FASTA exercise
+
+    #!/bin/bash
+    # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
+    # Script: variables.sh
+    # Desc: you put in a variable in the terminal which becomes the variable
+    # and also give two numbers in the terminal and it will add them.
+    # Date: 1 Oct 2019
+    # Shows the use of variables
+
+Data
+
+    1800.csv
+    1800.csv.txt
+    1801.csv
+    1801.csv.txt
+    1802.csv
+    1802.csv.txt
+    1803.csv
+    1803.csv.txt
+    407228326.fasta 
+    407228412.fasta
+    CMEE_Fungus.jpg
+    CMEE_Fungus.tif 
+    E.coli.fasta
+    spawaanxs.txt
+
+Sandox
+
+README.txt**********************************************************************
 
 Found following files in results directory: ...
 
-Found 14 code files: ConcatenateTwoFiles.sh, .txt, CountLines.sh, variables.sh, CompileLaTeX.sh, tiff2png.sh, csvtospace.sh, FirstExample.tex, MyExampleScript.sh, FirstBiblio.bib, UnixPrac1.txt, tabtocsv.sh, boilerplate.sh, TwoFiles.txt
+Found 13 code files: ConcatenateTwoFiles.sh, .txt, CountLines.sh, variables.sh, CompileLaTeX.sh, tiff2png.sh, csvtospace.sh, FirstExample.tex, MyExampleScript.sh, FirstBiblio.bib, UnixPrac1.txt, tabtocsv.sh, boilerplate.sh
 
-Found the following extra files: FirstExample.bbl, FirstExample.blg, FirstExample.pdf
+Found the following extra files: .Rhistory, FirstExample.pdf
 0.5 pt deducted per extra file
 
-Current Points = 98.5
+Current Points = 99.0
 
 ======================================================================
 Testing script/code files...
@@ -137,7 +185,7 @@ File contents are:
 **********************************************************************
 #!/bin/bash
 # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: CountLines.sh
+# Script: ConcatenateTwoFiles.sh
 # Desc: This is combining $2 onto $1 and making it into $3
 # Date: 1 Oct 2019
 
@@ -306,29 +354,29 @@ rm: cannot remove '*.out': No such file or directory
 rm: cannot remove '*.snm': No such file or directory
 rm: cannot remove '*.toc': No such file or directory
 
-** (evince:9798): WARNING **: Error when getting information for file '/home/mhasoba/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/RyanEllis_RTE19/Week1/Code/.pdf': No such file or directory
+** (evince:11859): WARNING **: Error when getting information for file '/home/mhasoba/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/RyanEllis_RTE19/Week1/Code/.pdf': No such file or directory
 
-** (evince:9798): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11859): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:9798): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11859): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:9798): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11859): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:9798): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11859): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:9798): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11859): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:9798): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11859): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:9798): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11859): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:9798): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11859): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:9798): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11859): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:9798): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11859): WARNING **: Error setting file metadata: No such file or directory
 
-** (evince:9798): WARNING **: Error setting file metadata: No such file or directory
+** (evince:11859): WARNING **: Error setting file metadata: No such file or directory
 
 ======================================================================
 Inspecting script file tiff2png.sh...
@@ -337,7 +385,7 @@ File contents are:
 **********************************************************************
 #!/bin/bash
 # Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
-# Script: CountLines.sh
+# Script: tiff2png.sh
 # Desc: converts tiff files to png files
 # Date: 1 Oct 2019
 
@@ -389,7 +437,7 @@ Done!
 
 Code ran without errors
 
-Time consumed = 0.00574s
+Time consumed = 0.00581s
 
 ======================================================================
 Inspecting script file FirstExample.tex...
@@ -399,7 +447,7 @@ File contents are:
 \documentclass[12pt]{article}
 \title{A Simple Document}
 \author{Your Name}
-\date{}
+\date{} 
 \begin{document}
   \maketitle
 
@@ -464,7 +512,7 @@ Hello mhasoba
 
 Code ran without errors
 
-Time consumed = 0.00551s
+Time consumed = 0.00449s
 
 ======================================================================
 Inspecting script file FirstBiblio.bib...
@@ -561,7 +609,7 @@ Done!
 
 Code ran without errors
 
-Time consumed = 0.00509s
+Time consumed = 0.00761s
 
 ======================================================================
 Inspecting script file boilerplate.sh...
@@ -592,16 +640,7 @@ This is a shell script!
 
 Code ran without errors
 
-Time consumed = 0.00276s
-
-======================================================================
-Inspecting script file TwoFiles.txt...
-
-File contents are:
-**********************************************************************
-**********************************************************************
-
-Testing TwoFiles.txt...
+Time consumed = 0.00508s
 
 ======================================================================
 ======================================================================
@@ -610,10 +649,75 @@ Finished running scripts
 Ran into 5 errors
 
 ======================================================================
+Assessing WEEK10...
+
+Found the following directories: Code
+
+Found the following files: 
+
+Checking for readme file in weekly directory...
+
+README file missing, 1 pt deducted
+
+Current Points = 98.0
+
+Data directory missing!
+
+Results directory missing!
+
+Creating Results directory...
+
+Found 1 code files: compileC.sh
+
+Found the following extra files: var2.c, var1.c, a.out, hello.c, ranges.c, operators.c
+0.5 pt deducted per extra file
+
+Current Points = 95.0
+
+======================================================================
+Testing script/code files...
+
+======================================================================
+Inspecting script file compileC.sh...
+
+File contents are:
+**********************************************************************
+#!/bin/bash
+
+echo running the C script $1
+gcc $1
+./a.out
+**********************************************************************
+
+Testing compileC.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+running the C script
+a + 3 = 10
+a + 3 = 10
+a multiplied by b: 14
+BODMAS! 17
+Modulus of a and b: 1
+
+**********************************************************************
+
+Encountered error (or warning):
+gcc: fatal error: no input files
+compilation terminated.
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 1 errors
+
+======================================================================
 ======================================================================
 
 FINISHED WEEKLY ASSESSMENT
 
-Current Points for the Week = 98.5
+Current Points for the Week = 95.0
 
 NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

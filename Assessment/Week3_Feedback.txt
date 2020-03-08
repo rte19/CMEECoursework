@@ -9,13 +9,13 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 8.00 MiB on disk 
+Your Git repo size this week is about 90.59 MiB on disk 
 
 PART 1: Checking project workflow...
 
-Found the following directories in parent directory: Week1, Assessment, Week2, .git, Week3
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, maximum_likelihood_estimation, Week10, HPC, Week5, Week2, Week4, .git, Week3, MiniProject
 
-Found the following files in parent directory: README.txt, READMEscripter.py, .gitignore
+Found the following files in parent directory: README.txt, .gitignore
 
 Checking for key files in parent directory...
 
@@ -29,6 +29,7 @@ __pycache__
 *.bbl
 *.blg
 *.pyc
+.Rhistory
 
 Results**********************************************************************
 
@@ -36,14 +37,22 @@ Found README in parent directory, named: README.txt
 
 Printing contents of README.txt:
 **********************************************************************
-My CMEE Coursework Repository
-Do I like this better?
-**********************************************************************
+README for all CMEECoursework!
+
+Assessment
+Week1 - Bash and LATEX week 30/09/19 - 06/10/19
+Week2 - Biological Computing in Python I 07/10/19 - 13/10/19
+Week3 - Biological Computing in R 14/10/19 - 20/10/19
+Week4 - Statistics Week 21/10/19 - 27/10/19
+Week5 - GIS Week 28/10/19 - 03/11/19
+Week6 - Population Genetics Week 04/11/19 - 10/11/19
+Week7 - Biological Computing in Python II 10/11/19 - 17/11/19
+Week8 - **********************************************************************
 
 ======================================================================
 Looking for the weekly directories...
 
-Found 3 weekly directories: Week1, Week2, Week3
+Found 8 weekly directories: Week1, Week10, Week2, Week3, Week4, Week5, Week6, Week7
 
 The Week3 directory will be assessed 
 
@@ -54,7 +63,7 @@ PART 2: Checking weekly code and workflow...
 ======================================================================
 Assessing WEEK3...
 
-Found the following directories: Code, Data
+Found the following directories: Code, Data, Results
 
 Found the following files: README.txt
 
@@ -64,52 +73,80 @@ Found README in parent directory, named: README.txt
 
 Printing contents of README.txt:
 **********************************************************************
-Material from week 14/10/19 - 20/10/19
+Biological Computing in R 14/10/19 - 20/10/19
 
 Code 
-    basic_io.R
-    control_flow.R
-    break.R
-    next.R
-    boilerplate.R 
-    TreeHeight.R 
-    Vectorize1.R 
-    preallocate.R 
     apply1.R 
     apply2.R 
-    sample.R 
-    Ricker.R 
-    Vectorize2.R 
-    try.R 
-    browse.R 
-    TAutoCorr.R 
-    DataWrng.R 
+    basic_io.R
+    boilerplate.R
+    break.R
+    browse.R
+    CompileLaTeX.R 
+    control_flow.R
+    DataWrang.R 
     DataWrangTidy.R
-    SQLinR.R
-    PP_Lattice.R  
+    get_TreeHeight.R 
+    Girko.R
     GPDD_Data.R
-
+    MyBars.R
+    next.R
+    plotLin.R 
+    PP_Lattice.R
+    PP_Regress.R 
+    preallocate.R
+    Ricker.R
+    sample.R
+    SQLinR.R
+    TAutoCorResults.bbl
+    TAutoCorResults.blg 
+    TAutoCorResults.pdf
+    TAutoCorResults.tex 
+    TAutoCorr.R
+    TreeHeight.R
+    try.R
+    Vectorize1.R 
+    Vectorize2.R 
+     
 Data
 
-
-README.txt
+    Autocorr.10000.txt
+    Autocorr.coefficient.txt
+    EcolArchives-E089-51-D1.csv
+    GPDDFiltered.RData
+    KeywestAnnualMeanTemperature.RData
+    PoundHillData.csv
+    PoundHillMetaData.csv
+    Results.txt
+    TreeHts.csv
+    trees.csv
 
 Results
 
-    Best_alingment.txt
+    Girko.pdf
+    MyBars.pdf
+    MyData.csv
+    MyLinReg.pdf
+    PP_Regress.pdf
+    PP_Regress_Results.csv
+    PP_Results.csv
+    Pred_Lattice.pdf
+    Prey_Lattice.pdf
+    SizeRatio_Lattics.pdf
 
-sandbox**********************************************************************
+Sandbox
 
-Results directory missing!
+README.txt**********************************************************************
 
-Creating Results directory...
+Found following files in results directory: Girko.pdf, PP_Results.csv, PP_Regress_Results.csv, PP_Regress.pdf, Pred_Lattice.pdf, Prey_Lattice.pdf, MyLinReg.pdf, SizeRatio_Lattice.pdf, MyBars.pdf, MyData.csv...
+ideally, Results directory should be empty other than, perhaps, a readme. 
 
-Found 21 code files: browse.R, apply1.R, sample.R, control_flow.R, GPDD_Data.R, boilerplate.R, TreeHeight.R, PP_Lattice.R, next.R, Ricker.R, Vectorize1.R, SQLinR.R, break.R, basic_io.R, try.R, apply2.R, TAutoCorr.R, Vectorize2.R, DataWrangTidy.R, preallocate.R, DataWrang.R
+Found 28 code files: browse.R, PP_Regress.R, apply1.R, sample.R, control_flow.R, CompileLaTeX.sh, GPDD_Data.R, boilerplate.R, TreeHeight.R, PP_Lattice.R, next.R, Ricker.R, Girko.R, Vectorize1.R, SQLinR.R, break.R, plotLin.R, basic_io.R, try.R, apply2.R, get_TreeHeight.R, TAutoCorr.R, Vectorize2.R, DataWrangTidy.R, preallocate.R, DataWrang.R, MyBars.R, TAutoCorResults.tex
 
-Found the following extra files: .Rhistory
+Found the following extra files: .Rhistory, Rplots.pdf, TAutoCorResults.pdf
 0.5 pt deducted per extra file
 
-Current Points = 99.5
+Current Points = 98.5
 
 ======================================================================
 Testing script/code files...
@@ -119,6 +156,43 @@ Inspecting script file browse.R...
 
 File contents are:
 **********************************************************************
+#!/usr/bin/env R
+
+rm(list = ls())
+graphics.off()
+
+###Debugging the code using browser()
+
+Exponential <- function(N0 = 1, r = 1, generations = 10){
+  #Runs a simulation of exponential growth
+  #Returns a vector of length generations
+  
+  N <- rep(NA, generations) #Creates a vector of NA
+  
+  N[1] <- N0
+  for( t in 2:generations){
+    N[t] <- N[t-1] * exp(r)
+    browser()
+  }
+  return(N)
+}
+
+plot(Exponential(), type = "l", main = "Exponential growth")
+
+
+#The script will be run till the first iteration of the for loop and 
+#the console will enter the browser mode, which looks like this:
+
+#Browse[1]>
+
+#Now, you can examine the variables present at that point. Also, at 
+#the browser console, you can enter expressions as normal, or use a 
+#few particularly useful debug commands (similar to the Python 
+#debugger):
+
+#n: single-step
+#c: exit browser and continue
+#Q: exit browser and abort, return to top-level.
 **********************************************************************
 
 Testing browse.R...
@@ -126,12 +200,128 @@ Testing browse.R...
 Output (only first 500 characters): 
 
 **********************************************************************
+Called from: Exponential()
+debug: N[t] <- N[t - 1] * exp(r)
+debug: browser()
+debug: N[t] <- N[t - 1] * exp(r)
+debug: browser()
+debug: N[t] <- N[t - 1] * exp(r)
+debug: browser()
+debug: N[t] <- N[t - 1] * exp(r)
+debug: browser()
+debug: N[t] <- N[t - 1] * exp(r)
+debug: browser()
+debug: N[t] <- N[t - 1] * exp(r)
+debug: browser()
+debug: N[t] <- N[t - 1] * exp(r)
+debug: browser()
+debug: N[t] <- N[t - 1] * exp(r)
+debug: browser()
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.08342s
+Time consumed = 0.20145s
+
+======================================================================
+Inspecting script file PP_Regress.R...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env R
+
+###A script that makes a fancy figure out of its data and saves the
+###regression statistics in a csv file
+
+rm(list = ls())
+graphics.off()
+
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+
+MyData <- read.csv("../Data/EcolArchives-E089-51-D1.csv") #Reading in the data
+#head(MyData)
+
+#Saving the figure as a pdf
+pdf("../Results/PP_Regress.pdf")
+
+#Plotting the figure
+p <- ggplot(MyData, aes(x = Prey.mass,
+                    y = Predator.mass,
+                    colour = Predator.lifestage)) +
+                    scale_x_log10() +
+                    scale_y_log10() +
+                    xlab("Prey Mass in Grams") +
+                    ylab("Predator Mass in Grams") +
+                    theme(legend.position = "bottom") +
+                    geom_point(shape = I(3)) + #shaping the points as crosses
+                    geom_smooth(method = "lm", fullrange = TRUE) + #straight lines that extrapolate to the edge of the axises
+                    facet_grid(Type.of.feeding.interaction~.) #facetting by type of feeding interaction in a column 
+p    
+
+graphics.off()
+
+RSqfun <- function(ModelFit, ModelData){
+  RSS <- sum(residuals(ModelFit)^2) #Residual sum of squares of quadratic
+  TSS <- sum((ModelData - mean(ModelData))^2) #Total sum of squares of quadratic
+  RSq <- 1 - (RSS/TSS) #R-squared value
+  return(RSq)
+}
+
+PP_Regress_Results <- as.data.frame(matrix(nrow = 1, ncol = 6))
+names(PP_Regress_Results) <- c("Type.Of.Feeding.Interaction_Predator.Lifestage", "Slope", "Y.Intercept", "Rsq", "Fstatistic", "pvalue")
+
+Data <- MyData %>%
+  nest(-Type.of.feeding.interaction, -Predator.lifestage)
+
+Data$ID <- paste(Data$Type.of.feeding.interaction, Data$Predator.lifestage, sep = "_")
+
+for(i in 1:length(Data$data)){
+  ModelData <- Data$data[[i]]
+  line <- lm(log(Predator.mass) ~ log(Prey.mass), ModelData)
+  ID <- Data$ID[i]  
+  slope <- coef(line)["log(Prey.mass)"]
+  intercept <- coef(line)["(Intercept)"]
+  Rsq <- RSqfun(line, log(ModelData$Predator.mass))
+  Fstatistic <- anova(lm(log(Predator.mass) ~ log(Prey.mass), ModelData))[1, 4]
+  pvalue <- anova(lm(log(Predator.mass) ~ log(Prey.mass), ModelData))[1, 5]
+  
+  temp.vector <- c(ID, slope, intercept, Rsq, Fstatistic, pvalue)
+  PP_Regress_Results <- rbind(PP_Regress_Results, temp.vector)
+}
+
+write.csv(PP_Regress_Results, "../Results/PP_Regress_Results.csv")
+**********************************************************************
+
+Testing PP_Regress.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+Warning message:
+In qt((1 - level)/2, df) : NaNs produced
+Warning messages:
+1: In anova.lm(lm(log(Predator.mass) ~ log(Prey.mass), ModelData)) :
+  ANOVA F-tests on an essentially perfect fit are unreliable
+2: In anova.lm(lm(log(Predator.mass) ~ log(Prey.mass), ModelData)) :
+  ANOVA F-tests on an essentially perfect fit are unreliable
 
 ======================================================================
 Inspecting script file apply1.R...
@@ -160,18 +350,18 @@ Testing apply1.R...
 Output (only first 500 characters): 
 
 **********************************************************************
- [1] -0.2940703 -0.3650002  0.4310098  0.1545134 -0.1896760  0.4126474
- [7]  0.4961201  0.6883934 -0.4188667 -0.3722628
- [1] 1.2163188 0.9766872 1.6357639 1.2428269 1.4517199 1.1750468 1.9024700
- [8] 1.3652350 0.5856511 1.1479112
- [1]  0.16193283  0.51783921 -0.08977520  0.54824583  0.09546440 -0.47522401
- [7] -0.01888075 -0.32963306  0.05140687  0.08143206
+ [1]  0.04213644 -0.39138735  0.03184181  0.07519377 -0.34512817 -0.40991694
+ [7] -0.35085517 -0.67710042  0.15111038  0.25254442
+ [1] 0.4382203 0.8759122 1.5355123 1.2039268 0.6996778 0.6173816 1.7929218
+ [8] 1.0662923 1.1773571 1.2155214
+ [1]  0.22936894 -0.43407159 -0.04734592 -0.11164018 -0.11121906  0.05502626
+ [7] -0.65808509 -0.13516418  0.21631388 -0.62474428
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.08798s
+Time consumed = 0.09984s
 
 ======================================================================
 Inspecting script file sample.R...
@@ -262,16 +452,16 @@ Output (only first 500 characters):
 **********************************************************************
 [1] "The loopy, non-preallocation approach takes:"
    user  system elapsed 
-  0.036   0.000   0.039 
+  0.036   0.000   0.035 
 [1] "The loopy, but with preallocation approach takes:"
    user  system elapsed 
-  0.012   0.000   0.013 
+  0.012   0.000   0.014 
 [1] "The loopy, non-preallocation approach takes:"
    user  system elapsed 
-  0.016   0.000   0.013 
+  0.012   0.000   0.013 
 [1] "The vectorised sapply approach takes:"
    user  system elapsed 
-  0.012   0.000   0.011 
+  0.008   0.000   0.011 
 [1] "The vectorised lapply approach takes: "
    user  system elapsed 
   0.012   0.000   0.011 
@@ -280,7 +470,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.29574s
+Time consumed = 0.29915s
 
 ======================================================================
 Inspecting script file control_flow.R...
@@ -336,7 +526,6 @@ Output (only first 500 characters):
 
 **********************************************************************
 [1] "a is TRUE"
-[1] "Less than a half"
 [1] "1  squared is 1"
 [1] "2  squared is 4"
 [1] "3  squared is 9"
@@ -368,13 +557,103 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.15278s
+Time consumed = 0.12957s
+
+======================================================================
+Inspecting script file CompileLaTeX.sh...
+
+File contents are:
+**********************************************************************
+#!/bin/bash
+# Author: Ryan Ellis ryan.ellis19@imperial.ac.uk
+# Script: CompileLaTeX.sh
+# Desc: This bash compiles LeTeX files, to make PDF files
+# Date: 2 Oct 2019
+
+pdflatex $1.tex
+pdflatex $1.tex
+bibtex $1
+pdflatex $1.tex
+pdflatex $1.tex
+evince $1.pdf &
+
+## Cleanup
+rm *~
+rm *.aux
+rm *.dvi
+rm *.log
+rm *.nav
+rm *.out
+rm *.snm
+rm *.toc
+**********************************************************************
+
+Testing CompileLaTeX.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+(/usr/share/texlive/texmf-dist/tex/latex/tools/.tex
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+File ignored)
+*
+! Emergency stop.
+<*> .tex
+        
+!  ==> Fatal error occurred, no output PDF file produced!
+Transcript written on .log.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (pre
+**********************************************************************
+
+Encountered error (or warning):
+bibtex: Need exactly one file argument.
+Try `bibtex --help' for more information.
+rm: cannot remove '*~': No such file or directory
+rm: cannot remove '*.aux': No such file or directory
+rm: cannot remove '*.dvi': No such file or directory
+rm: cannot remove '*.log': No such file or directory
+rm: cannot remove '*.nav': No such file or directory
+rm: cannot remove '*.out': No such file or directory
+rm: cannot remove '*.snm': No such file or directory
+rm: cannot remove '*.toc': No such file or directory
+
+** (evince:785): WARNING **: Error when getting information for file '/home/mhasoba/Documents/Teaching/IC_CMEE/2019-20/Coursework/StudentRepos/RyanEllis_RTE19/Week3/Code/.pdf': No such file or directory
+
+** (evince:785): WARNING **: Error setting file metadata: No such file or directory
+
+** (evince:785): WARNING **: Error setting file metadata: No such file or directory
+
+** (evince:785): WARNING **: Error setting file metadata: No such file or directory
+
+** (evince:785): WARNING **: Error setting file metadata: No such file or directory
+
+** (evince:785): WARNING **: Error setting file metadata: No such file or directory
+
+** (evince:785): WARNING **: Error setting file metadata: No such file or directory
+
+** (evince:785): WARNING **: Error setting file metadata: No such file or directory
+
+** (evince:785): WARNING **: Error setting file metadata: No such file or directory
+
+** (evince:785): WARNING **: Error setting file metadata: No such file or directory
+
+** (evince:785): WARNING **: Error setting file metadata: No such file or directory
+
+** (evince:785): WARNING **: Error setting file metadata: No such file or directory
 
 ======================================================================
 Inspecting script file GPDD_Data.R...
 
 File contents are:
 **********************************************************************
+#!/usr/bin/env R
+
+###Creates a world map, then superimposes on the map all the locations 
+###from which we have data in the GPDD dataframe
 
 load("../Data/GPDDFiltered.RData")
 library(maps)
@@ -397,7 +676,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.23069s
+Time consumed = 0.23653s
 
 ======================================================================
 Inspecting script file boilerplate.R...
@@ -436,7 +715,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.10811s
+Time consumed = 0.13068s
 
 ======================================================================
 Inspecting script file TreeHeight.R...
@@ -445,18 +724,20 @@ File contents are:
 **********************************************************************
 #!usr/bin/env R
 
-# This function calculates heighs of trees given distance of each tree
+# This function calculates heights of trees given distance of each tree
 # from its base and angle to its top, using the trigonometric formula
 #
 # height = distance * tan(radians)
 #
 # ARGUMENTS
-# degrees:  The angle of levation of tree
+# degrees:  The angle of elevation of tree
 # distance: The distance from base of tree (e.g., meters)
 #
 # OUTPUT
 # The height of the tree, same units as "distance"
 
+rm(list = ls())
+graphics.off()
 
 Trees <- read.csv("../Data/trees.csv")
 
@@ -464,17 +745,18 @@ TreesDegrees <- Trees$Angle.degrees
 TreesHeight <- Trees$Distance.m
 
 
-TreeHeight <- function(degrees, distance){
+TreeHeight <- function(degrees, distance){ #Function that works out the height of that tree, based on distance and degrees
   radians <- degrees * pi / 180
   height <- distance * tan(radians)
 
 }
 
-a <- TreeHeight(TreesDegrees, TreesHeight)
+Height <- TreeHeight(TreesDegrees, TreesHeight) #Making a vector of all the tree heights
 
-b <- cbind(Trees, a)
-colnames(b)[4] <- "Tree.Height.m"
-write.csv(b, "../Data/TreeHts.csv", row.names=FALSE)**********************************************************************
+TreeHts <- cbind(Trees, Height) #Inserting the height vector onto the original data so we can see how tall each tree is
+colnames(TreeHts)[4] <- "Tree.Height.m"
+write.csv(TreeHts, "../Data/TreeHts.csv", row.names=FALSE)
+**********************************************************************
 
 Testing TreeHeight.R...
 
@@ -486,41 +768,58 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.09281s
+Time consumed = 0.11466s
 
 ======================================================================
 Inspecting script file PP_Lattice.R...
 
 File contents are:
 **********************************************************************
-MyDF <- read.csv("../Data/EcolArchives-E089-51-D1.csv")
+#!/usr/bin/env R
+
+rm(list = ls())
+graphics.off()
+
+MyDF <- read.csv("../Data/EcolArchives-E089-51-D1.csv") #Reading in the data
 #dim(MyDF)
 #head(MyDF)
 
-library(lattice)
+library(lattice) #loading up lattice
 
-pdf("../Results/Pred_Lattice.pdf")
-densityplot(~log(Predator.mass) | Type.of.feeding.interaction, data=MyDF)
-dev.off()
+pdf("../Results/Pred_Lattice.pdf") #Saving a blank pdf in Results
+densityplot(~log(Predator.mass) | Type.of.feeding.interaction, data=MyDF) 
+#Plotting the densityplot for the log of Predator masss by categorised by the type of feeding interaction from the data
+dev.off() #Terminating the plotting here
 
 pdf("../Results/Prey_Lattice.pdf")
 densityplot(~log(Prey.mass) | Type.of.feeding.interaction, data=MyDF)
-dev.off()
+#Plotting the densityplot for the log of Prey masss by categorised by the type of feeding interaction from the data
+dev.off() #Terminating the plotting here
 
 pdf("../Results/SizeRatio_Lattice.pdf")
+#Plotting the densityplot for the log of Prey/Predator masss by categorised by the type of feeding interaction from the data
 densityplot(~log(Prey.mass/Predator.mass) | Type.of.feeding.interaction, data=MyDF)
-dev.off()
+dev.off() #Terminating the plotting here
 
 MeanPredatorMass <- log(tapply(X = MyDF$Predator.mass, INDEX = MyDF$Type.of.feeding.interaction, FUN = mean))
+#taking the log of the Predator mass data, indexed by the type of feeding interaction, and applying the mean to it
 MedianPredatorMass <- log(tapply(X = MyDF$Predator.mass, INDEX = MyDF$Type.of.feeding.interaction, FUN = median))
+#taking the log of the Predator mass data, indexed by the type of feeding interaction, and applying the median to it
 
 MeanPreyMass <- log(tapply(X = MyDF$Prey.mass, INDEX = MyDF$Type.of.feeding.interaction, FUN = mean))
+#taking the log of the Prey mass data, indexed by the type of feeding interaction, and applying the mean to it
 MedianPreyMass <- log(tapply(X = MyDF$Prey.mass, INDEX = MyDF$Type.of.feeding.interaction, FUN = median))
+#taking the log of the Prey mass data, indexed by the type of feeding interaction, and applying the median to it
 
 MeanSizeRatio <- log(tapply(X = MyDF$Prey.mass/MyDF$Predator.mass, INDEX = MyDF$Type.of.feeding.interaction, FUN = mean))
+#taking the log of the Prey/Predator mass data, indexed by the type of feeding interaction, and applying the mean to it
 MedianSizeRatio <- log(tapply(X = MyDF$Prey.mass/MyDF$Predator.mass, INDEX = MyDF$Type.of.feeding.interaction, FUN = median))
+#taking the log of the Predator data, indexed by the type of feeding interaction, and applying the mean to it
 
-
+Frame <- data.frame(MeanPredatorMass, MedianPredatorMass, MeanPreyMass, MedianPreyMass, MeanSizeRatio, MedianSizeRatio)
+#Creating a dataframe for all these means and medians
+write.csv(Frame, "../Results/PP_Results.csv")
+#Writing the dataframe into a csv file into the results directory
 
 
 
@@ -542,7 +841,7 @@ null device
 
 Code ran without errors
 
-Time consumed = 3.21685s
+Time consumed = 3.25789s
 
 ======================================================================
 Inspecting script file next.R...
@@ -572,7 +871,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.09430s
+Time consumed = 0.12223s
 
 ======================================================================
 Inspecting script file Ricker.R...
@@ -612,6 +911,75 @@ Calls: plot
 Execution halted
 
 ======================================================================
+Inspecting script file Girko.R...
+
+File contents are:
+**********************************************************************
+#!usr/bin/env R
+
+rm(list = ls())
+graphics.off()
+
+library(ggplot2)
+
+build_ellipse <- function(hradius, vradius){ # Function tha returns an ellipse
+  npoints = 250
+  a <- seq(0, 2 * pi, length = npoints + 1)
+  x <- hradius * cos(a)
+  y <- vradius * sin(a)
+  return(data.frame(x = x, y = y))
+}
+
+N <- 250 # Assign size of the matrix
+
+M <- matrix(rnorm(N * N), N, N) # Build the matrix
+
+eigvals <- eigen(M)$values # Find the eigenvalues
+
+eigDF <- data.frame("Real" = Re(eigvals), "Imaginary" = Im(eigvals)) # Build a dataframe
+
+my_radius <- sqrt(N) # The radius of the circle is sqrt(N)
+
+ellDF <- build_ellipse(my_radius, my_radius) # Dataframe to plot the ellipse
+
+names(ellDF) <- c("Real", "Imaginary") # Rename the columns
+
+##Saving result figure as a file called Girko.pdf in the results directory
+pdf("../Results/Girko.pdf")
+
+#Plot the eigenvalues
+p <- ggplot(eigDF, aes(x = Real, y = Imaginary))
+p <- p + 
+  geom_point(shape = I(3)) +
+  theme(legend.position = "none")
+
+#Now add the vertical and horizontal lines
+p <- p + geom_hline(aes(yintercept = 0))
+p <- p + geom_vline(aes(xintercept = 0))
+
+#Finally, add the elipse
+p <- p + geom_polygon(data = ellDF, aes(x = Real, y = Imaginary, alpha = 1/20, fill = "red"))
+p
+
+graphics.off()
+
+
+
+**********************************************************************
+
+Testing Girko.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 1.43746s
+
+======================================================================
 Inspecting script file Vectorize1.R...
 
 File contents are:
@@ -644,7 +1012,7 @@ Output (only first 500 characters):
 **********************************************************************
 [1] "Using loops, the time taken is:"
    user  system elapsed 
-  0.112   0.000   0.109 
+  0.088   0.004   0.092 
 [1] "Using the in-built vectorized function, the time taken is:"
    user  system elapsed 
   0.000   0.000   0.001 
@@ -653,7 +1021,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.38546s
+Time consumed = 0.27060s
 
 ======================================================================
 Inspecting script file SQLinR.R...
@@ -779,7 +1147,70 @@ i equals  9
 
 Code ran without errors
 
-Time consumed = 0.11359s
+Time consumed = 0.12206s
+
+======================================================================
+Inspecting script file plotLin.R...
+
+File contents are:
+**********************************************************************
+#!/usr/bin/env R
+
+rm(list = ls())
+graphics.off()
+
+library(ggplot2)
+
+###Let's try mathematical annotation on a axis, and in the plot area
+###First create some linear regression "data"
+
+x <- seq(0, 100, by = 0.1)
+y <- -4. + 0.25 * x +
+  rnorm(length(x), mean = 0., sd = 2.5)
+
+# and put them in a dataframe
+my_data <- data.frame(x = x, y = y)
+
+# perform a linear regression
+my_lm <- summary(lm(y ~ x, data = my_data))
+
+# Saving the following plot as MyLinReg.pdf
+pdf("../Results/MyLinReg.pdf")
+
+# plot the data
+p <- ggplot(my_data, aes(x = x, y = y, colour = abs(my_lm$residual))) +
+  geom_point() +
+  scale_colour_gradient(low = "black", high = "red") +
+  theme(legend.position = "none") +
+  scale_x_continuous(expression(alpha^2 * pi / beta * sqrt(Theta)))
+
+# add the regression line
+p <- p + geom_abline(
+  intercept = my_lm$coefficients[1][1],
+  slope = my_lm$coefficients[2][1],
+  colour = "red")
+
+# throw some maths on the plot
+p <- p + geom_text(aes(x = 60, y = 0,
+                       label = "sqrt(alpha) * 2 * pi"),
+                   parse = TRUE, size = 6,
+                   colour = "blue")
+p
+
+graphics.off()
+**********************************************************************
+
+Testing plotLin.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 1.33825s
 
 ======================================================================
 Inspecting script file basic_io.R...
@@ -817,6 +1248,56 @@ Inspecting script file try.R...
 
 File contents are:
 **********************************************************************
+#!/usr/bin/env R
+
+###Rather than having R throw you out of the code, you would rather 
+###catch the error and keep going. This can be done using try. Lets 
+###try try.
+
+rm(list = ls())
+graphics.off()
+
+###First, let's write a function that runs a simulation that involves 
+###sampling from a synthetic population with replacement and takes its 
+###mean, but only if at least 30 unique samples are obtained.
+
+doit <- function(x){
+  temp_x <- sample(x, replace = TRUE)
+  if( length(unique(temp_x)) > 30) { #only take mean if sample was sufficient
+    print(paste("Mean of this sample was:", as.character(mean(temp_x))))
+  }
+  else{
+    stop("Couldn't calculate mean: too few unique values!")
+  }
+}
+
+popn <- rnorm(50) #Generate your population
+
+lapply(1:15, function(i) doit(popn))
+# But in most cases, the script will fail because of the stop command
+#at some iteration, returning less than the requested 15 mean values, 
+#followed by an error stating that the mean could not be calculated 
+#because too few unique values were sampled.
+
+result <- lapply(1:15, function(i) try(doit(popn), FALSE))
+#In this run, you again asked for the means of 15 samples, and again 
+#you (most likely) got less than that but without any error! The 
+#FALSE modifier for the try command suppresses any error messages, 
+#but result will still contain them so that you can inspect them later
+
+#The errors are stored in th object result: a list that stores the 
+#result of each run, even the errors
+class(result)
+
+result
+
+#You can also store the results "manually" by using a loop to do the same:
+result2 <- vector("list", 15) #Preallocate/Initialise
+for( i in 1:15){
+  result2[[i]] <- try(doit(popn), FALSE)
+}
+
+result2
 **********************************************************************
 
 Testing try.R...
@@ -827,9 +1308,10 @@ Output (only first 500 characters):
 
 **********************************************************************
 
-Code ran without errors
-
-Time consumed = 0.09923s
+Encountered error (or warning):
+Error in doit(popn) : Couldn't calculate mean: too few unique values!
+Calls: lapply -> FUN -> doit
+Execution halted
 
 ======================================================================
 Inspecting script file apply2.R...
@@ -853,18 +1335,75 @@ Testing apply2.R...
 Output (only first 500 characters): 
 
 **********************************************************************
-             [,1]         [,2]       [,3]       [,4]       [,5]        [,6]
- [1,]  0.09525401 -1.533192989 -0.6693624   36.68708  -38.45326 -109.892181
- [2,]  0.03962414  2.104570369 -0.6376613  -70.46931  136.78856   45.388002
- [3,] -0.55630902  0.170948671 -1.1950439  -29.16552   18.94944   -7.378046
- [4,] -0.46415477 -0.385612708  0.5835788  203.12373   41.22808  125.426278
- [5,] -1.98188837 -0.405504903 -0.8915114  -22.23090  154.86599  -30.085407
- [6,] -1.43584059  0.009428433  0.8564947  -6
+             [,1]       [,2]      [,3]        [,4]        [,5]       [,6]
+ [1,] -0.63154854  61.758245  62.73717  -15.137650  -12.464735 -142.44687
+ [2,] -0.06158223  72.279190 -76.46348  -14.389414 -245.906120   68.94349
+ [3,]  1.32815530 -98.308290  80.18975   -8.815405   68.615625  110.36152
+ [4,] -1.13755912  93.890765 121.75865 -158.621421   63.305229  -13.83964
+ [5,] -1.69010287  16.130724 -67.96588  110.003455   86.495185   76.57155
+ [6,] -0.57095870 -33.270679  83.58822  164.187650  -56.4
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 0.11738s
+Time consumed = 0.11929s
+
+======================================================================
+Inspecting script file get_TreeHeight.R...
+
+File contents are:
+**********************************************************************
+#!usr/bin/env R
+
+# This function calculates heights of trees given distance of each tree
+# from its base and angle to its top, using the trigonometric formula
+# and takes the fle to be read from the command line
+#
+# ARGUMENTS
+# degrees:  The angle of elevation of tree
+# distance: The distance from base of tree (e.g., meters)
+#
+# OUTPUT
+# The height of the tree, same units as "distance"
+
+rm(list = ls())
+graphics.off()
+
+args <- commandArgs(trailingOnly = TRUE) #Making a list of the command arguments in character form
+treedata <- args[1] #Assigning 1st argument in command line
+
+Trees <- read.csv(file = treedata) #Reading in the first argument of the command line
+
+TreesDegrees <- Trees$Angle.degrees
+TreesHeight <- Trees$Distance.m
+
+
+TreeHeight <- function(degrees, distance){ #Function that works out the height of that tree, based on distance and degrees
+  radians <- degrees * pi / 180
+  height <- distance * tan(radians)
+}
+
+Height <- TreeHeight(TreesDegrees, TreesHeight) #Making a vector of all the tree heights
+
+TreeHts <- cbind(Trees, Height) #Inserting the height vector onto the original data so we can see how tall each tree is
+colnames(TreeHts)[4] <- "Tree.Height.m"
+write.csv(TreeHts, "../Data/TreeHts2.csv", row.names=FALSE)
+**********************************************************************
+
+Testing get_TreeHeight.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Error in file(file, "rt") : cannot open the connection
+Calls: read.csv -> read.table -> file
+In addition: Warning message:
+In file(file, "rt") : cannot open file 'NA': No such file or directory
+Execution halted
 
 ======================================================================
 Inspecting script file TAutoCorr.R...
@@ -873,26 +1412,33 @@ File contents are:
 **********************************************************************
 #!usr/bin/env R
 
-MyData <- load("../Data/KeyWestAnnualMeanTemperature.RData")
-Data <- ats
+rm(list = ls())
+graphics.off()
+
+###Autocorrelation in weather: Are temperatures of one year 
+###significantly correlated with the next year (successive years), 
+###across years in a given location?
+
+MyData <- load("../Data/KeyWestAnnualMeanTemperature.RData") #loading the data
+Data <- ats #Assigning the data to Data
 
 plot(Data)
 
-first99 <- Data[1:99, 2]
-last99 <- Data[2:100, 2]
-Years <- Data[2:100, 1]
+first99 <- Data[1:99, 2] #First 99 of temperatures
+last99 <- Data[2:100, 2] #Last 99 of the temperatures
+Years <- Data[2:100, 1] #Last 99 of the years
 
-Data2 <- as.data.frame(Years)
-Data2$Temps <- as.data.frame(last99)
-Data2$Temps.less1 <- as.data.frame(first99)
+Data2 <- as.data.frame(Years) #Assigning years to a new dataframe
+Data2$Temps <- as.data.frame(last99) #Assigning the last 99 to the years
+Data2$Temps.less1 <- as.data.frame(first99) #Assigning the first 99 to these data too
+#This allows us to hae the same data alligned to itself n - 1
 
 #print(Data2)
 
-cor.coefficient <- cor(Data2$Temps, Data2$Temps.less1)
-DataCor <- cor.coefficient
+DataCor <- cor(Data2$Temps, Data2$Temps.less1) #Calculating the correlation coefficient between the two temp data columns
 #print(DataCor)
 
-cor_shuffle <- function(){
+cor_shuffle <- function(){ #Function that randomly shuffles the temperatures
   DataShuffle <- Data[sample(nrow(Data), replace=FALSE),]
   
   first_99 <- DataShuffle[1:99, 2]
@@ -900,28 +1446,26 @@ cor_shuffle <- function(){
   
   return(cor(first_99,last_99))
 }
-RandomCors <- 0
-for(i in 1:10000){
+RandomCors <- c() #Making empty variable to hold 10000 random autocorrelations
+for(i in 1:10000){ #Loop to call the cor_shuffle function and keep appending it into RandomCors
 
   RandomCors <- c(RandomCors, cor_shuffle())
 }
-RandomCors <- RandomCors[-1]
 #print(RandomCors)
 
-BigCors <- 0
-for( cor in RandomCors){
+BigCors <- c() #Making empty variable to contain all correlation coefficients greater than the first one, DataCor
+for( cor in RandomCors){ #Appending in all the big cors
   if( cor > DataCor){
     BigCors <- c(BigCors, cor)
   }
 }
-BigCors <- BigCors[-1]
-print(BigCors)
+#print(BigCors)
 
-print(length(RandomCors))
-print(length(BigCors))
-p_value <- length(BigCors)/length(RandomCors)
+#print(length(RandomCors))
+#print(length(BigCors))
+p_value <- length(BigCors)/length(RandomCors) #Working out the p-value
 
-paste("p_value:",p_value)
+print(paste("p_value:",p_value))
 **********************************************************************
 
 Testing TAutoCorr.R...
@@ -929,16 +1473,13 @@ Testing TAutoCorr.R...
 Output (only first 500 characters): 
 
 **********************************************************************
-[1] 0.3366899 0.3347289
-[1] 10000
-[1] 2
-[1] "p_value: 2e-04"
+[1] "p_value: 1e-04"
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 2.11215s
+Time consumed = 1.39808s
 
 ======================================================================
 Inspecting script file Vectorize2.R...
@@ -984,7 +1525,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.11001s
+Time consumed = 0.10075s
 
 ======================================================================
 Inspecting script file DataWrangTidy.R...
@@ -1124,7 +1665,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 3.07766s
+Time consumed = 1.83077s
 
 ======================================================================
 Inspecting script file DataWrang.R...
@@ -1200,16 +1741,127 @@ In file(file, "rt") :
 Execution halted
 
 ======================================================================
+Inspecting script file MyBars.R...
+
+File contents are:
+**********************************************************************
+#!usr/bin/env R
+
+###In this example, we will use the ggplot geom text to annotate a plot
+
+rm(list = ls())
+graphics.off()
+
+library(ggplot2)
+
+a <- read.table("../Data/Results.txt", header = TRUE) #Read in the data
+head(a) #Check to see it
+
+a$ymin <- rep(0, dim(a)[1]) #Append a column of zeros
+
+##Saving result figure as a file called MyBars.pdf in the results directory
+pdf("../Results/MyBars.pdf")
+
+#Print the first linerange
+p <- ggplot(a)
+p <- p + geom_linerange(data = a, aes(
+  x = x,
+  ymin = ymin,
+  ymax = y1,
+  size = (0.5)
+  ),
+  colour = "#E69F00",
+  alpha = 1/2, show.legend = FALSE)
+
+#Print the second linerange
+p <- p + geom_linerange(data = a, aes(
+  x =x,
+  ymin = ymin,
+  ymax = y2,
+  size = (0.5)
+  ),
+  colour = "#56B4E9",
+  alpha = 1/2, show.legend = FALSE)
+
+#Print the third linerange
+p <- p + geom_linerange(data = a, aes(
+  x = x,
+  ymin = ymin,
+  ymax = y3,
+  size = (0.5)
+  ),
+  colour = "#D55E00",
+  alpha = 1/2, show.legend = FALSE)
+
+#Annotate he plot with labels
+p <- p + geom_text(data = a, aes(x = x, y = -500, label = Label))
+
+#Now set the axis labels, remove the legend, and prepare for bw printing
+p <- p + scale_x_continuous("My x axis",
+                        breaks = seq(3, 5, by = 0.05)) +
+  scale_y_continuous("My y axis") +
+  theme_bw() +
+  theme(legend.position = "none")
+
+p #You need ths to actually create the gaph into the proposed saved pdf
+
+graphics.off() #You need to also do this to actually get the graph data into the pdf
+**********************************************************************
+
+Testing MyBars.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+         x   y1   y2 y3 Label
+1 3.515424 4320 4320  0  <NA>
+2 3.533984 2160 2160  0  <NA>
+3 3.557647 4320 4320  0  <NA>
+4 3.569953 4320 4320  0  <NA>
+5 3.578984 8640 8640  0  <NA>
+6 3.585665 2160 2160  0  <NA>
+
+**********************************************************************
+
+Encountered error (or warning):
+Warning message:
+Removed 91 rows containing missing values (geom_text). 
+
+======================================================================
+Inspecting script file TAutoCorResults.tex...
+
+File contents are:
+**********************************************************************
+\documentclass[a4paper, 11pt]{article} % A4 paper size, default 11pt font size
+
+\title{Interpretation of the TAutoCor.R results}
+\author{Ryan Ellis}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Results}
+The autocorrelation of the orginal KeyWestAnnualMeanTemperature data was calculated to be r = 0.326, p-value = $3*10^{-4}$.
+\\ Therefore, due to the p-value being so small, 0.0003, there is a less than 0.03\% probability that the results were due to chance. This means it can be assumed with confidence that their is an autocorrelation exhibited of 0.326. However, this correlation coefficient is fairly mild, and so there is only a weak positive relationship observed. 
+
+\end{document}
+**********************************************************************
+
+Testing TAutoCorResults.tex...
+
+======================================================================
 ======================================================================
 Finished running scripts
 
-Ran into 5 errors
+Ran into 10 errors
 
 ======================================================================
 ======================================================================
 
 FINISHED WEEKLY ASSESSMENT
 
-Current Points for the Week = 99.5
+Current Points for the Week = 98.5
 
 NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

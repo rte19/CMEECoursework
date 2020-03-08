@@ -1,0 +1,261 @@
+Starting weekly assessment for Ryan, Week6
+
+Current Points = 100
+
+Note that: 
+(1) Major sections begin with a double "====" line 
+(2) Subsections begin with a single "====" line 
+(3) Code output or text file content are printed within single "*****" lines 
+
+======================================================================
+======================================================================
+Your Git repo size this week is about 90.59 MiB on disk 
+
+PART 1: Checking project workflow...
+
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, maximum_likelihood_estimation, Week10, HPC, Week5, Week2, Week4, .git, Week3, MiniProject
+
+Found the following files in parent directory: README.txt, .gitignore
+
+Checking for key files in parent directory...
+
+Found .gitignore in parent directory, great! 
+
+Printing contents of .gitignore:
+**********************************************************************
+*~ 
+*.tmp
+__pycache__
+*.bbl
+*.blg
+*.pyc
+.Rhistory
+
+Results**********************************************************************
+
+Found README in parent directory, named: README.txt
+
+Printing contents of README.txt:
+**********************************************************************
+README for all CMEECoursework!
+
+Assessment
+Week1 - Bash and LATEX week 30/09/19 - 06/10/19
+Week2 - Biological Computing in Python I 07/10/19 - 13/10/19
+Week3 - Biological Computing in R 14/10/19 - 20/10/19
+Week4 - Statistics Week 21/10/19 - 27/10/19
+Week5 - GIS Week 28/10/19 - 03/11/19
+Week6 - Population Genetics Week 04/11/19 - 10/11/19
+Week7 - Biological Computing in Python II 10/11/19 - 17/11/19
+Week8 - **********************************************************************
+
+======================================================================
+Looking for the weekly directories...
+
+Found 8 weekly directories: Week1, Week10, Week2, Week3, Week4, Week5, Week6, Week7
+
+The Week6 directory will be assessed 
+
+======================================================================
+======================================================================
+PART 2: Checking weekly code and workflow...
+
+======================================================================
+Assessing WEEK6...
+
+Found the following directories: Code, Lectures, Data
+
+Found the following files: README.txt
+
+Checking for readme file in weekly directory...
+
+Found README in parent directory, named: README.txt
+
+Printing contents of README.txt:
+**********************************************************************
+Population Genetics Week 04/11/19 - 10/11/19
+
+Code
+
+    bears.R 
+    gecko.R 
+    turtle.R 
+
+Data
+
+    bears.csv
+    bent-toed_gecko.csv
+    leopard_gecko.csv
+    turtle.csv
+    turtle.genotypes.csv
+    western_banded_gecko.csv
+    
+Lectures
+
+    GenomicsBioinformatics.txt
+
+Results
+
+Sandbox
+
+README.txt**********************************************************************
+
+Results directory missing!
+
+Creating Results directory...
+
+Found 3 code files: gecko.R, turtle.R, bears.R
+
+Found the following extra files: .Rhistory
+0.5 pt deducted per extra file
+
+Current Points = 99.5
+
+======================================================================
+Testing script/code files...
+
+======================================================================
+Inspecting script file gecko.R...
+
+File contents are:
+**********************************************************************
+
+###Practical on genetic drift, mutation and divergence
+rm(list = ls())
+
+##Reading in the data
+western_banded <- read.csv("../Data/western_banded_gecko.csv", header = F, stringsAsFactors = F, colClasses=rep("character", 20000))
+bent_toad <- read.csv("../Data/bent-toed_gecko.csv", header = F, stringsAsFactors = F, colClasses=rep("character", 20000))
+leopard <- read.csv("../Data/leopard_gecko.csv", header = F, stringsAsFactors = F, colClasses=rep("character", 20000))
+
+##Identifying the non-snp data
+w_banded_nonsnp <- c()
+for (i in 1:ncol(western_banded)) {
+  if (length(unique(western_banded[,i]))==1) w_banded_nonsnp <- c(w_banded_nonsnp, i)
+}
+
+i <- c()
+
+b_toad_nonsnp <- c()
+for (i in 1:ncol(bent_toad)) {
+  if (length(unique(bent_toad[,i]))==1) b_toad_nonsnp <- c(b_toad_nonsnp, i)
+}
+
+i <- c()
+
+##Finding the snp data
+w_banded_snp <- c()
+for (i in 1:ncol(western_banded)) {
+  if (length(unique(western_banded[,i])) > 1) w_banded_snp <- c(w_banded_snp, i)
+}
+
+i <- c()
+
+b_toad_snp <- c()
+for (i in 1:ncol(bent_toad)) {
+  if (length(unique(bent_toad[,i])) > 1) b_toad_snp <- c(b_toad_snp, i)
+}
+
+i <- c()
+
+##Attempting to take out the snp columns
+for (i in ncol())
+
+
+##Identifying non-snp data for both bent-toad and wester banded together
+wb_bt_nonsnp <- c()
+for (i in 1:ncol(western_banded & bent_toad)) {
+  if (length(unique(western_banded & bent_toad[,i]))==1) wb_bt_nonsnp <- c(wb_bt_nonsnp, i)
+}
+**********************************************************************
+
+Testing gecko.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Error in ncol() : argument "x" is missing, with no default
+Execution halted
+
+======================================================================
+Inspecting script file turtle.R...
+
+File contents are:
+**********************************************************************
+#!usr/bin/env R
+
+rm(list = ls())
+graphics.off()
+
+##Reading in the data as matrices because all just numbers
+thaplotypes <- as.matrix(read.csv("../Data/turtle.csv", header = F))
+tgenotype <- as.matrix(read.csv("../Data/turtle.genotypes.csv", header = F))
+
+##Counting allele frequencies for all 2000 alleles with the gentotype data
+
+
+
+for (b in turtlegenotype.ncol[1:2000]){
+  for (a in b[1:10]){
+    fa(n + 1) <-  
+  }
+}**********************************************************************
+
+Testing turtle.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+
+**********************************************************************
+
+Encountered error (or warning):
+Error: unexpected '}' in:
+"    fa(n + 1) <-  
+  }"
+Execution halted
+
+======================================================================
+Inspecting script file bears.R...
+
+File contents are:
+**********************************************************************
+#!usr/bin/env R
+
+rm(list=ls())
+
+bears <- read.csv("../Data/bears.csv", header = FALSE, stringsAsFactors = F)
+dim(bears)
+**********************************************************************
+
+Testing bears.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+[1]    40 10000
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.61235s
+
+======================================================================
+======================================================================
+Finished running scripts
+
+Ran into 2 errors
+
+======================================================================
+======================================================================
+
+FINISHED WEEKLY ASSESSMENT
+
+Current Points for the Week = 99.5
+
+NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!

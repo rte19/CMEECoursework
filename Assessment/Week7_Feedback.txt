@@ -9,13 +9,13 @@ Note that:
 
 ======================================================================
 ======================================================================
-Your Git repo size this week is about 20.83 MiB on disk 
+Your Git repo size this week is about 90.59 MiB on disk 
 
 PART 1: Checking project workflow...
 
-Found the following directories in parent directory: Week6, Week1, Week7, Assessment, Week5, Week2, Week4, .git, Week3, MiniProject
+Found the following directories in parent directory: Week6, Week1, Week7, Assessment, maximum_likelihood_estimation, Week10, HPC, Week5, Week2, Week4, .git, Week3, MiniProject
 
-Found the following files in parent directory: README.txt, READMEscripter.py, .gitignore
+Found the following files in parent directory: README.txt, .gitignore
 
 Checking for key files in parent directory...
 
@@ -29,8 +29,9 @@ __pycache__
 *.bbl
 *.blg
 *.pyc
+.Rhistory
 
-Results**********************************************************************
+#Results**********************************************************************
 
 Found README in parent directory, named: README.txt
 
@@ -46,12 +47,12 @@ Week4 - Statistics Week 21/10/19 - 27/10/19
 Week5 - GIS Week 28/10/19 - 03/11/19
 Week6 - Population Genetics Week 04/11/19 - 10/11/19
 Week7 - Biological Computing in Python II 10/11/19 - 17/11/19
-**********************************************************************
+Week8 - **********************************************************************
 
 ======================================================================
 Looking for the weekly directories...
 
-Found 7 weekly directories: Week1, Week2, Week3, Week4, Week5, Week6, Week7
+Found 8 weekly directories: Week1, Week10, Week2, Week3, Week4, Week5, Week6, Week7
 
 The Week7 directory will be assessed 
 
@@ -77,18 +78,71 @@ Biological Computing in Python II 10/11/19 - 17/11/19
 Code
 
     blackbirds.py
+    #!usr/bin/env python3
+    """A script showing how regular expressions can be used for text mining of files"""
+
     DrawFW.py
+    #!usr/bin/env python3
+    """A script to generate and plot a "synthetic" food web"""
+
+    fmr.R
+    
+    LV1LV2Profiling.sh
+    #!usr/bin/bash
+    ###Prifling the two scripts: LV1.py and LV2.py, using bash
+    
     LV1.py
+    #!usr/bin/env python3
+    """A script that plots Lotka-Volterra model: a predator-prey system 
+    in 2D space""" 
+    
     LV2.py
+    #!usr/bin/env python3
+    """A script that plots Lotka-Volterra model: a predator-prey system 
+    in 2D space"""
+    
     MyFirstJupyterNb.ipynd
-    profileme.py
+    
     profileme2.py
+    #!usr/bin/env python3
+    """A script to show how to time the speeds of an improved profileme2.py script"""
+    
+    profileme.py
+    #!usr/bin/env python3
+    """A script to show how to time the speed of the script"""
+    
     regexs.py
+    #!usr/bin/env python3
+    """Regular expressions in Python"""
+    
+    run_fmr_R.py
+    #!usr/bin/env python3
+    """Runs fmr.R to generate the desired result and prints to the 
+    python screen whether the run was successful, and the contents of 
+    the R console output"""
+    
+    TestR.py
+    #!usr/bin/env python3
+    """A script that runs R from python, by use of a simple workflow"""
+    
+    TestR.R 
+    
     timeitme.py
+    #!usr/bin/env python3
+    """A script to time and compare speeds of the functions from 
+    profileme.py and profileme2.py. A method that is easy to use and 
+    easy to compare the speeds of functions.
+    This also illustrates how to use %timeit to do just this"""
+    
+    using_os.py
+    #!usr/bin/env python3
+    """A script to obtain specifie lists of directories, sbdirectories 
+    and files from in the home directory using subprocess"""
 
 Data
 
     blackbirds.txt
+    NagyEtAl1999.csv
     TestOaksData.csv
 
 README.txt
@@ -100,7 +154,7 @@ Sandbox**********************************************************************
 Found following files in results directory: TestR.Rout, LV_model2.pdf, LV_model.pdf, DrawFW.pdf, TestR_errFile.Rout...
 ideally, Results directory should be empty other than, perhaps, a readme. 
 
-Found 13 code files: TestR.py, regexs.py, profileme2.py, timeitme.py, blackbirds.py, TestR.R, profileme.py, MyFirstJupyterNb.ipynb, LV1.py, DrawFW.py, LV2.py, MyFirstJupyterNb-checkpoint.ipynb, Untitled1-checkpoint.ipynb
+Found 17 code files: TestR.py, regexs.py, profileme2.py, timeitme.py, blackbirds.py, LV1LV2Profiling.sh, TestR.R, profileme.py, fmr.R, MyFirstJupyterNb.ipynb, using_os.py, LV1.py, DrawFW.py, run_fmr_R.py, LV2.py, MyFirstJupyterNb-checkpoint.ipynb, Untitled1-checkpoint.ipynb
 
 ======================================================================
 Testing script/code files...
@@ -135,14 +189,15 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.12818s
+Time consumed = 0.11726s
 
 ======================================================================
 Inspecting script file regexs.py...
 
 File contents are:
 **********************************************************************
-##Regular expressions in Python
+#!usr/bin/env python3
+"""Regular expressions in Python"""
 
 import re
 
@@ -265,7 +320,7 @@ My_Data = webpage_html.decode()
 #print(My_Data)
 #A lot of potentially useful information! Let's extract all the names of the academics
 pattern = r"(Dr|Prof)\s+\w+\s+\w+"
-regex = re.compile(pattern) #example use of re.compile(); yo can also ignore case with re.IGNORECASE
+regex = re.compile(pattern) #example use of re.compile(); you can also ignore case with re.IGNORECASE
 for match in regex.finditer(My_Data):
     print(match.group())
 
@@ -282,10 +337,9 @@ regexs.py is a Python script file;
 
 checking for docstrings...
 
-No functions, but no script-level docstring either
-2 pts deducted
+Found no functions, but one docstring for the script, good
 
-Current Points = 98
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -298,7 +352,7 @@ found a match: an
 
 Encountered error (or warning):
 Traceback (most recent call last):
-  File "regexs.py", line 63, in <module>
+  File "regexs.py", line 64, in <module>
     match.group()
 AttributeError: 'NoneType' object has no attribute 'group'
 
@@ -308,7 +362,6 @@ Inspecting script file profileme2.py...
 File contents are:
 **********************************************************************
 #!usr/bin/env python3
-
 """A script to show how to time the speeds of an improved profileme2.py script"""
 
 
@@ -339,7 +392,8 @@ def run_my_funcs(x,y):
 run_my_funcs(10000000,"My string")
 
 # Type into ipython command line:
-# run -p profileme2.py**********************************************************************
+# run -p profileme2.py
+# run -p -s cumtime profileme2.py  #This will do the profling and display the results sorted by cumtime**********************************************************************
 
 Testing profileme2.py...
 
@@ -349,7 +403,7 @@ checking for docstrings...
 
 Found one or more docstrings and functions
 
-Current Points = 98
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -360,7 +414,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 3.63049s
+Time consumed = 3.78107s
 
 ======================================================================
 Inspecting script file timeitme.py...
@@ -368,7 +422,6 @@ Inspecting script file timeitme.py...
 File contents are:
 **********************************************************************
 #!usr/bin/env python3
-
 """A script to time and compare speeds of the functions from 
 profileme.py and profileme2.py. A method that is easy to use and 
 easy to compare the speeds of functions.
@@ -409,25 +462,25 @@ checking for docstrings...
 
 Found no functions, but one docstring for the script, good
 
-Current Points = 98
+Current Points = 100
 
 Output (only first 500 characters): 
 
 **********************************************************************
-10000000 My string
-10000000 My string
 
 **********************************************************************
 
 Code ran without errors
 
-Time consumed = 9.97586s
+Time consumed = 10.00691s
 
 ======================================================================
 Inspecting script file blackbirds.py...
 
 File contents are:
 **********************************************************************
+#!usr/bin/env python3
+"""A script showing how regular expressions can be used for text mining of files"""
 
 import re
 import scipy as sc 
@@ -472,10 +525,9 @@ blackbirds.py is a Python script file;
 
 checking for docstrings...
 
-No functions, but no script-level docstring either
-2 pts deducted
+Found no functions, but one docstring for the script, good
 
-Current Points = 96
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -489,7 +541,48 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.13932s
+Time consumed = 0.14624s
+
+======================================================================
+Inspecting script file LV1LV2Profiling.sh...
+
+File contents are:
+**********************************************************************
+#!usr/bin/bash
+###Prifling the two scripts: LV1.py and LV2.py, using bash
+
+echo "Profiling the LV1.py script"
+python3 -m cProfile LV1.py 
+
+echo "Profiling the LV2.py script"
+python3 -m cProfile LV2.py 
+
+
+
+
+
+**********************************************************************
+
+Testing LV1LV2Profiling.sh...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+Profiling the LV1.py script
+         548130 function calls (537255 primitive calls) in 1.247 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       36    0.000    0.000    0.002    0.000 <frozen importlib._bootstrap>:1043(__import__)
+      684    0.003    0.000    0.003    0.000 <frozen importlib._bootstrap>:119(release)
+      405    0.000    0.000    0.000    0.000 <frozen importlib._bootstrap>:159(__init__)
+      405    0.001    0.0
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 2.42416s
 
 ======================================================================
 Inspecting script file TestR.R...
@@ -509,7 +602,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.09780s
+Time consumed = 0.10757s
 
 ======================================================================
 Inspecting script file profileme.py...
@@ -517,7 +610,7 @@ Inspecting script file profileme.py...
 File contents are:
 **********************************************************************
 #!usr/bin/env python3
-"""A script to show how to time the speeds of the script"""
+"""A script to show how to time the speed of the script"""
 
 def my_squares(iters):
     """A function that returns a list containing all the squared values
@@ -558,7 +651,7 @@ checking for docstrings...
 
 Found one or more docstrings and functions
 
-Current Points = 96
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -569,7 +662,50 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 6.47680s
+Time consumed = 6.68964s
+
+======================================================================
+Inspecting script file fmr.R...
+
+File contents are:
+**********************************************************************
+# Plots log(field metabolic rate) against log(body mass) for the Nagy et al 
+# 1999 dataset to a file fmr.pdf.
+
+cat("Reading CSV\n")
+
+nagy <- read.csv('../Data/NagyEtAl1999.csv', stringsAsFactors = FALSE)
+
+cat("Creating graph\n")
+pdf('../Results/fmr_plot.pdf', 11, 8.5)
+col <- c(Aves='purple3', Mammalia='red3', Reptilia='green3')
+plot(log10(nagy$M.g), log10(nagy$FMR.kJ.day.1), pch=19, col=col[nagy$Class], 
+     xlab=~log[10](M), ylab=~log[10](FMR))
+for(class in unique(nagy$Class)){
+    model <- lm(log10(FMR.kJ.day.1) ~ log10(M.g), data=nagy[nagy$Class==class,])
+    abline(model, col=col[class])
+}
+dev.off()
+
+cat("Finished in R!\n")
+**********************************************************************
+
+Testing fmr.R...
+
+Output (only first 500 characters): 
+
+**********************************************************************
+Reading CSV
+Creating graph
+null device 
+          1 
+Finished in R!
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.17370s
 
 ======================================================================
 Inspecting script file MyFirstJupyterNb.ipynb...
@@ -701,12 +837,96 @@ File contents are:
 Testing MyFirstJupyterNb.ipynb...
 
 ======================================================================
+Inspecting script file using_os.py...
+
+File contents are:
+**********************************************************************
+#!usr/bin/env python3
+"""A script to obtain specifie lists of directories, sbdirectories 
+and files from in the home directory using subprocess"""
+
+# Use the subprocess.os module to get a list of files and directories 
+# in your ubuntu home directory 
+
+# Hint: look in subprocess.os and/or subprocess.os.path and/or 
+# subprocess.os.walk for helpful functions
+
+import subprocess
+
+#################################
+#~Get a list of files and 
+#~directories in your home/ that start with an uppercase 'C'
+
+# Type your code here:
+
+import re
+
+# Get the user's home directory.
+home = subprocess.os.path.expanduser("~")
+
+# Create a list to store the results.
+FilesDirsStartingWithC = []
+
+# Use a for loop to walk through the home directory.
+for (dir, subdir, files) in subprocess.os.walk(home):
+    FilesDirsStartingWithC.extend(re.findall(r"^C\w+", "".join(dir)))
+    FilesDirsStartingWithC.extend(re.findall(r"^C\w+", "".join(subdir)))
+    FilesDirsStartingWithC.extend(re.findall(r"^C\w+", "".join(files)))
+print(FilesDirsStartingWithC)
+
+  
+#################################
+# Get files and directories in your home/ that start with either an 
+# upper or lower case 'C'
+
+# Type your code here:
+FilesDirsStartingWithCc = []
+
+for (dir, subdir, files) in subprocess.os.walk(home):
+    FilesDirsStartingWithCc.extend(re.findall(r"^C|c\w+", "".join(dir)))
+    FilesDirsStartingWithCc.extend(re.findall(r"^C|c\w+", "".join(subdir)))
+    FilesDirsStartingWithCc.extend(re.findall(r"^C|c\w+", "".join(files)))
+print(FilesDirsStartingWithCc)
+
+#################################
+# Get only directories in your home/ that start with either an upper or 
+#~lower case 'C' 
+
+# Type your code here:
+DirsStartingWithCc = []
+
+for (dir, subdir, files) in subprocess.os.walk(home):
+    DirsStartingWithCc.extend(re.findall(r"^C|c\w+", "".join(dir)))
+    DirsStartingWithCc.extend(re.findall(r"^C|c\w+", "".join(subdir)))
+print(DirsStartingWithCc)
+**********************************************************************
+
+Testing using_os.py...
+
+using_os.py is a Python script file;
+
+checking for docstrings...
+
+Found no functions, but one docstring for the script, good
+
+Current Points = 100
+
+Output (only first 500 characters): 
+
+**********************************************************************
+['CommonHTMLSVG', 'Caligraphic', 'CONTRIBUTING', 'Changelog', 'ChangeLogpackage', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'Courier', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'CONTRIBUTING', 'ColdObservable', 'Changelog', 'ChangeLogpackage', 'ChangeLogpackage', 'ChangeLogpackage', 'ChangeLogpackage', 'CompatCo
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 6.25061s
+
+======================================================================
 Inspecting script file LV1.py...
 
 File contents are:
 **********************************************************************
 #!usr/bin/env python3
-
 """A script that plots Lotka-Volterra model: a predator-prey system 
 in 2D space"""
 
@@ -734,7 +954,7 @@ def dCR_dt(pops, t=0):
 # z is mortality rate (time−1) and e is the consumer's efficiency 
 #(a fraction) in converting resource to consumer biomass.
 
-type(dCR_dt)
+#type(dCR_dt)
 
 #assigning parameter values to dCR_dt
 r = 1.
@@ -795,7 +1015,7 @@ checking for docstrings...
 
 Found one or more docstrings and functions
 
-Current Points = 96
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -805,7 +1025,7 @@ Output (only first 500 characters):
 
 Code ran without errors
 
-Time consumed = 0.76970s
+Time consumed = 0.80702s
 
 ======================================================================
 Inspecting script file DrawFW.py...
@@ -813,7 +1033,6 @@ Inspecting script file DrawFW.py...
 File contents are:
 **********************************************************************
 #!usr/bin/env python3
-
 """A script to generate and plot a "synthetic" food web"""
 
 import networkx as nx 
@@ -882,7 +1101,7 @@ checking for docstrings...
 
 Found one or more docstrings and functions
 
-Current Points = 96
+Current Points = 100
 
 Output (only first 500 characters): 
 
@@ -899,12 +1118,63 @@ Encountered error (or warning):
   if not cb.is_string_like(label):
 
 ======================================================================
+Inspecting script file run_fmr_R.py...
+
+File contents are:
+**********************************************************************
+#!usr/bin/env python3
+"""Runs fmr.R to generate the desired result and prints to the 
+python screen whether the run was successful, and the contents of 
+the R console output"""
+
+import subprocess
+
+###Running the R script and storing its output (stdout) and any error codes (stderr)
+p = subprocess.Popen(["Rscript", "fmr.R"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+stdout, stderr = p.communicate()
+
+###Telling us if the R script ran with no errors
+if str(stderr) == "b''":
+    print("This ran correctly with no errors")
+else:
+    print("This ran incorrectly with error/s")
+
+###Printing the output from the R script
+print(stdout.decode())**********************************************************************
+
+Testing run_fmr_R.py...
+
+run_fmr_R.py is a Python script file;
+
+checking for docstrings...
+
+Found no functions, but one docstring for the script, good
+
+Current Points = 100
+
+Output (only first 500 characters): 
+
+**********************************************************************
+This ran correctly with no errors
+Reading CSV
+Creating graph
+null device 
+          1 
+Finished in R!
+
+
+**********************************************************************
+
+Code ran without errors
+
+Time consumed = 0.20484s
+
+======================================================================
 Inspecting script file LV2.py...
 
 File contents are:
 **********************************************************************
 #!usr/bin/env python3
-
 """A script that plots Lotka-Volterra model: a predator-prey system 
 in 2D space"""
 
@@ -935,14 +1205,22 @@ def dCR_dt(pops, t=0):
 # z is mortality rate (time−1) and e is the consumer's efficiency 
 #(a fraction) in converting resource to consumer biomass.
 
-type(dCR_dt)
+#type(dCR_dt)
 
 #assigning parameter values to dCR_dt with the command line
-r = sys.argv[1]
-a = sys.argv[2]
-z = sys.argv[3]
-e = sys.argv[4]
-K = 1
+if len(sys.argv) == 5:
+    r = float(sys.argv[1]) #1
+    a = float(sys.argv[2]) #0.5
+    z = float(sys.argv[3]) #1.5
+    e = float(sys.argv[4]) #0.75
+else:
+    r = 1
+    a = 0.5
+    z = 1.5
+    e = 0.75
+    print("Default values are being used here")
+K = 35
+
 
 #Define the time vector; let's integrate from time point 0 to 15, using 1000 sub-divisions of time
 t = sc.linspace(0, 15, 1000)
@@ -975,18 +1253,17 @@ p.legend(loc='best')
 p.xlabel('Time') 
 p.ylabel('Population density')
 p.title('Consumer-Resource population dynamics')
-p.show() #To display the figure
+p.text(17, 3, "Parameter values: \n r = %s \n a = %s \n z = %s \n e = %s" % (r, a, z, e), horizontalalignment = 'right')
+#p.show() #To display the figure. Never run p.show in a script from command line
 
-#f1.savefig('../Results/LV2_model.pdf') #save figure
+f1.savefig('../Results/LV2_model.pdf') #save figure
 
-#f2 = p.figure() #Openning a second empty figure
-#p.plot(pops[:,0], pops[:,1], 'r-') # plot
-#p.grid()
-#p.xlabel('Resource density')
-#p.ylabel('Consumer density')
-#p.title('Consumer-Resource population dynamics')
+finalR = pops[-1, 0]
+finalC = pops[-1, 1]
+print("The final R is: %s" % (str(finalR)))
+print("The final C is: %s" % (str(finalC)))
 
-#f2.savefig('../Results/LV_model2.pdf')
+
 **********************************************************************
 
 Testing LV2.py...
@@ -997,19 +1274,20 @@ checking for docstrings...
 
 Found one or more docstrings and functions
 
-Current Points = 96
+Current Points = 100
 
 Output (only first 500 characters): 
 
 **********************************************************************
+Default values are being used here
+The final R is: 2.07061157016
+The final C is: 1.13869006034
 
 **********************************************************************
 
-Encountered error (or warning):
-Traceback (most recent call last):
-  File "LV2.py", line 36, in <module>
-    r = sys.argv[1]
-IndexError: list index out of range
+Code ran without errors
+
+Time consumed = 0.69423s
 
 ======================================================================
 Inspecting script file MyFirstJupyterNb-checkpoint.ipynb...
@@ -1159,13 +1437,13 @@ Testing Untitled1-checkpoint.ipynb...
 ======================================================================
 Finished running scripts
 
-Ran into 3 errors
+Ran into 2 errors
 
 ======================================================================
 ======================================================================
 
 FINISHED WEEKLY ASSESSMENT
 
-Current Points for the Week = 96
+Current Points for the Week = 100
 
 NOTE THAT THESE ARE POINTS, NOT MARKS FOR THE WEEK!
